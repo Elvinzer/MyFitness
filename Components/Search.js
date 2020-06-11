@@ -55,11 +55,11 @@ _displayDetailForFilm = (idFilm) => {
       <View style={styles.main_container}>
         <TextInput
           style={styles.textinput}
-          placeholder='Titre du film'
+          placeholder='Choix du training'
           onChangeText={(text) => this._searchTextInputChanged(text)}
           onSubmitEditing={() => this._loadFilms()}
         />
-        <Button title='Ok Google' onPress={() => this._loadFilms()}/>
+        <Button title='Lets go baby' onPress={() => this._loadFilms()}/>
         <FlatList
           data={this.state.films}
           keyExtractor={(item) => item.id.toString()}

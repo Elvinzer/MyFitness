@@ -2,8 +2,8 @@
 
 import React from 'react'
 import { StyleSheet, View, TextInput, Button, Text, FlatList, ActivityIndicator } from 'react-native'
-import FilmItem from './FilmItem'
-import { getFilmsFromApiWithSearchedText } from '../API/TMDBApi'
+import TrainingItem from './TrainingItem'
+import trainingList from '../Helpers/trainingList'
 
 class Search extends React.Component {
 
@@ -12,20 +12,16 @@ class Search extends React.Component {
     this.searchedText = "" // Initialisation de notre donnée searchedText en dehors du state
     this.state = {
       isLoading: false, // Par défaut à false car il n'y a pas de chargement tant qu'on ne lance pas de recherche
-      films: []
+      trainings: []
     }
   }
 
-  _loadFilms() {
-    if (this.searchedText.length > 0) { // Seulement si le texte recherché n'est pas vide
+  _loadTrainings() {
       this.setState({ isLoading: true }) // Lancement du chargement
-      getFilmsFromApiWithSearchedText(this.searchedText).then(data => {
           this.setState({
-             films: data.results,
+             trainings: dataTrainings.results,
              isLoading: false
            })
-      })
-    }
   }
 
 // Fonction permettant d'afficher le petit rond de témoin de chargement des datas
@@ -45,9 +41,10 @@ class Search extends React.Component {
     this.searchedText = text // Modification du texte recherché à chaque saisie de texte, sans passer par le setState comme avant
   }
 
-  _displayDetailForFilm = (idFilm) => {
-      console.log("Display film with id " + idFilm)
-      this.props.navigation.navigate("FilmDetail", { idFilm: idFilm })
+  _displayDetailForTraining = (idTraining) => {
+      console.log("Display film with id " + idTraining)
+      this.props.navigation.navigate("TrainingDetail", { id: idTraining })
+      return 0
   }
 
   render() {
@@ -58,13 +55,13 @@ class Search extends React.Component {
           style={styles.textinput}
           placeholder='Choix du training'
           onChangeText={(text) => this._searchTextInputChanged(text)}
-          onSubmitEditing={() => this._loadFilms()}
+          onSubmitEditing={() => this._loadTrainings()}
         />
-        <Button title='Lets go baby' onPress={() => this._loadFilms()}/>
+        <Button title='Lets go baby' onPress={() => this._loadTrainings()}/>
         <FlatList
-          data={this.state.films}
+          data={trainingList}
           keyExtractor={(item) => item.id.toString()}
-          renderItem={({item}) => <FilmItem film={item} displayDetailForFilm={this._displayDetailForFilm} />}
+          renderItem={({item}) => <TrainingItem training={item}/>}
         />
         {this._displayLoading()}
       </View>

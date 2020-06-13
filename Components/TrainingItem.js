@@ -1,11 +1,15 @@
-// Components/FilmItem.js
+// Components/TrainingItem.js
 
 import React from 'react'
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native'
-
+function testFonction(){
+  console.log("test")
+}
 class TrainingItem extends React.Component {
   render() {
-      const { training, displayDetailForTraining } = this.props
+
+      const { training, displayDetailForTraining } = this.props;
+      console.log(this.props)
       return (
         <TouchableOpacity
           style={styles.main_container}

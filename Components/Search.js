@@ -16,6 +16,11 @@ class Search extends React.Component {
     }
   }
 
+  _displayDetailForTraining = (idTraining) => {
+    console.log("Display training with id " + idTraining)
+    //this.props.navigation.navigate("TrainingDetail")
+  }
+
   _loadTrainings() {
       this.setState({ isLoading: true }) // Lancement du chargement
           this.setState({
@@ -30,7 +35,6 @@ class Search extends React.Component {
       return (
         <View style={styles.loading_container}>
           <ActivityIndicator size='large' />
-          {/* Le component ActivityIndicator possède une propriété size pour définir la taille du visuel de chargement : small ou large. Par défaut size vaut small, on met donc large pour que le chargement soit bien visible */}
         </View>
       )
     }
@@ -41,14 +45,7 @@ class Search extends React.Component {
     this.searchedText = text // Modification du texte recherché à chaque saisie de texte, sans passer par le setState comme avant
   }
 
-  _displayDetailForTraining = (idTraining) => {
-      console.log("Display film with id " + idTraining)
-      this.props.navigation.navigate("TrainingDetail", { id: idTraining })
-      return 0
-  }
-
   render() {
-    console.log(this.state.isLoading)
     return (
       <View style={styles.main_container}>
         <TextInput
@@ -57,11 +54,11 @@ class Search extends React.Component {
           onChangeText={(text) => this._searchTextInputChanged(text)}
           onSubmitEditing={() => this._loadTrainings()}
         />
-        <Button title='Lets go baby' onPress={() => this._loadTrainings()}/>
+        <Button title='Lets go baby' onPress={() => this._loadTrainingss()}/>
         <FlatList
           data={trainingList}
           keyExtractor={(item) => item.id.toString()}
-          renderItem={({item}) => <TrainingItem training={item}/>}
+          renderItem={({item}) => <TrainingItem training={item} displayDetailForTraining={this._displayDetailForTraining}/>}
         />
         {this._displayLoading()}
       </View>

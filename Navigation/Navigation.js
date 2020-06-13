@@ -14,10 +14,7 @@ const SearchStackNavigator = createStackNavigator({
     }
   },
   TrainingDetail: { // Encore une fois j'ai mis le même nom que celui du component mais libre à vous de choisir un nom différent
-    screen: TrainingDetail,
-    navigationOptions: {
-      title: 'Détail du training'
-    }
+    screen: TrainingDetail
   }
 })
 

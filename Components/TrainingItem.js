@@ -2,9 +2,7 @@
 
 import React from 'react'
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native'
-function testFonction(){
-  console.log("test")
-}
+
 class TrainingItem extends React.Component {
   render() {
 
@@ -16,7 +14,6 @@ class TrainingItem extends React.Component {
           onPress={() => displayDetailForTraining(training.id)}>
           <Image
             style={styles.image}
-            //source={source={uri: getImageFromApi(training.poster_path)}}
             source={source={uri: training.poster_path}}
           />
           <View style={styles.content_container}>

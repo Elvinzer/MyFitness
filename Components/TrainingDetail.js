@@ -7,7 +7,8 @@ class TrainingDetail extends React.Component {
   render() {
     return (
       <View style={styles.main_container}>
-        <Text>Détail du training</Text>
+        <Text>Détail du training {this.props.navigation.state.params.idTraining}</Text>
+        <Text>Test de contenu : </Text>
       </View>
     )
   }

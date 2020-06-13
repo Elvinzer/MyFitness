@@ -17,8 +17,11 @@ class Search extends React.Component {
   }
 
   _displayDetailForTraining = (idTraining) => {
-    console.log("Display training with id " + idTraining)
-    //this.props.navigation.navigate("TrainingDetail")
+    const { trainingContenu } = this.props;
+    console.log("log contenu :")
+    console.log(trainingContenu)
+    this.props.navigation.navigate("TrainingDetail", { idTraining: idTraining })
+
   }
 
   _loadTrainings() {

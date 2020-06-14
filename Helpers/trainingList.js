@@ -4,7 +4,7 @@ export default dataTrainings = [
    {
       id:1,
       vote_average:7.2,
-      title:"Pushhh",
+      title:"Push",
       original_title:"Programme Push",
       release_date:"12/06/2019",
       poster_path:"https://static.vecteezy.com/system/resources/previews/000/162/096/original/man-doing-push-up-vector-illustration.jpg",
@@ -13,7 +13,7 @@ export default dataTrainings = [
    {
       id:2,
       vote_average:8.1,
-      title:"Pullll",
+      title:"Pull",
       original_title:"Programme Pull",
       release_date:"12/06/2020",
       poster_path:"https://www.pullupfitness.com/wp-content/uploads/2017/06/tractions-pronation-300x300.png",

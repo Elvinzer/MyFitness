@@ -11,7 +11,7 @@ class TrainingItem extends React.Component {
       return (
         <TouchableOpacity
           style={styles.main_container}
-          onPress={() => displayDetailForTraining(training.id)}>
+          onPress={() => displayDetailForTraining(training.id, training.title, training.overview)}>
           <Image
             style={styles.image}
             source={source={uri: training.poster_path}}

@@ -16,20 +16,15 @@ class Search extends React.Component {
     }
   }
 
-  _displayDetailForTraining = (idTraining) => {
-    const { trainingContenu } = this.props;
-    console.log("log contenu :")
-    console.log(trainingContenu)
-    this.props.navigation.navigate("TrainingDetail", { idTraining: idTraining })
+  _displayDetailForTraining = (idTraining, titreTrainings, trainingContenu) => {
+    //console.log("log contenu :")
+    // On envoie tout dans la page "TrainingDetail"
+    this.props.navigation.navigate("TrainingDetail", { idTraining: idTraining , titreTrainings: titreTrainings, trainingContenu: trainingContenu })
 
   }
 
   _loadTrainings() {
-      this.setState({ isLoading: true }) // Lancement du chargement
-          this.setState({
-             trainings: dataTrainings.results,
-             isLoading: false
-           })
+
   }
 
 // Fonction permettant d'afficher le petit rond de témoin de chargement des datas

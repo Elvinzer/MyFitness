@@ -7,7 +7,7 @@ class TrainingItem extends React.Component {
   render() {
 
       const { training, displayDetailForTraining } = this.props;
-      console.log(this.props)
+      //console.log(this.props)
       return (
         <TouchableOpacity
           style={styles.main_container}

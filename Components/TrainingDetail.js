@@ -7,8 +7,8 @@ class TrainingDetail extends React.Component {
   render() {
     return (
       <View style={styles.main_container}>
-        <Text>Détail du training {this.props.navigation.state.params.titreTrainings} : </Text>
-        <Text>{this.props.navigation.state.params.trainingContenu}</Text>
+        <Text>Détail du training {this.props.route.params.titreTrainings} : </Text>
+        <Text>{this.props.route.params.trainingContenu}</Text>
       </View>
     )
   }

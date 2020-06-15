@@ -36,7 +36,9 @@ class TrainingItem extends React.Component {
 const styles = StyleSheet.create({
   main_container: {
     height: 190,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    paddingLeft: 20,
+    paddingRight: 20
   },
   image: {
     width: 120,

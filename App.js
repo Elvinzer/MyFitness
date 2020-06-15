@@ -2,25 +2,22 @@
 import React from 'react'
 import 'react-native-gesture-handler';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native'
-
+// Import des Components customs
 import Search from './Components/Search'
 import TrainingDetail from './Components/TrainingDetail'
 import HomePage from './Components/HomePage'
 import Notifications from './Components/Notifications'
 import LoginPage from './Components/LoginPage'
-
-
-
+// Import de la "navigation"
 import { NavigationContainer } from '@react-navigation/native';
-
-// Import du moduble permettant d'utiliser le menu de coté 'Hamburger'
 import { createStackNavigator } from '@react-navigation/stack';
+// Import du moduble permettant d'utiliser le menu de coté 'Hamburger'
 import { createDrawerNavigator } from '@react-navigation/drawer';
-
+// On initialise les constantes de menu cliquable
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
-
+// On crée le menu déroulant
 function MenuDeroulant(){
   return (
     <Drawer.Navigator initialRouteName="Search">

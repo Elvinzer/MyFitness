@@ -6,7 +6,7 @@ import { StyleSheet, View, Text } from 'react-native'
 class LoginPage extends React.Component {
   render() {
     return (
-      <View style={styles.main_container}>
+      <View style={styles.main_container} title= {'Accueil'}>
         <Text>Ceci est la login page</Text>
       </View>
     )

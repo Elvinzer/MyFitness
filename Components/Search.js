@@ -12,7 +12,8 @@ class Search extends React.Component {
     this.searchedText = "" // Initialisation de notre donnée searchedText en dehors du state
     this.state = {
       isLoading: false, // Par défaut à false car il n'y a pas de chargement tant qu'on ne lance pas de recherche
-      trainings: []
+      trainings: [],
+      testText : []
     }
   }
 
@@ -23,9 +24,6 @@ class Search extends React.Component {
 
   }
 
-  _loadTrainings() {
-
-  }
 
 // Fonction permettant d'afficher le petit rond de témoin de chargement des datas
   _displayLoading() {

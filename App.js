@@ -5,6 +5,7 @@ import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native'
 // Import des Components customs
 import Search from './Components/Search'
 import TrainingDetail from './Components/TrainingDetail'
+import SeancePush from './Components/SeancePush'
 import HomePage from './Components/HomePage'
 import Notifications from './Components/Notifications'
 import LoginPage from './Components/LoginPage'
@@ -48,6 +49,11 @@ export default class App extends React.Component {
             name="TrainingDetail"
             component={TrainingDetail}
             options={{ title: 'Détail du training' }}
+          />
+          <Stack.Screen
+            name="SeancePush"
+            component={SeancePush}
+            options={{ title: 'SeancePush nigga' }}
           />
         </Stack.Navigator>
       </NavigationContainer>

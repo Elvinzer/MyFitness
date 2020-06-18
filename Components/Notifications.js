@@ -7,7 +7,7 @@ class Notifications extends React.Component {
   render() {
     return (
       <View style={styles.main_container}>
-        <Text>Ceci est la de notifications</Text>
+        <Text>Ceci est la page de notifications</Text>
       </View>
     )
   }

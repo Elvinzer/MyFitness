@@ -70,7 +70,7 @@ export default class SeancePush extends Component {
     return (
     <ScrollView data-layer="88a2e7ff-26bd-49a8-919e-b096694a0980" style={styles.seancePush}>
         <ReactImage data-layer="cb7f9766-e118-40d7-8ebb-736b8421734b" source={require('../assets/backgroundScreenPush.png')} style={styles.seancePush_backgroundScreenPush} />
-        <Text data-layer="1bd16f22-00be-496a-bac0-9e319c1979ef" style={styles.seancePush_seancePushBiceps}>Séance push biceps
+        <Text data-layer="1bd16f22-00be-496a-bac0-9e319c1979ef" style={styles.seancePush_seancePushBiceps}>Séance push bras
 </Text>
         <View data-layer="b2e59d69-50f8-499c-8ec8-dbfa6c4c4ac3" style={styles.seancePush_composant12}>
             <View data-layer="408cb1fa-871d-471a-8ced-ef29d220113d" style={styles.seancePush_composant12_rectangle1}></View>
@@ -103,19 +103,13 @@ const styles = StyleSheet.create({
     "backgroundColor": "rgba(255, 255, 255, 1)",
     "paddingLeft": 0,
     "width": 360,
-    "height": 637,
+    "height": 600,
   },
   "seancePush_backgroundScreenPush": {
     "opacity": 1,
     "position": "relative",
-    "marginTop": 0,
-    "marginRight": 0,
-    "marginBottom": 0,
-    "marginLeft": 0,
     "width": 361,
-    "height": 640,
-    "left": 0,
-    "top": 0
+    "height": 600,
   },
   "seancePush_seancePushBiceps": {
     "opacity": 1,
@@ -187,8 +181,6 @@ const styles = StyleSheet.create({
     "position": "absolute",
     "width": 128,
     "height": 128,
-    "left": 0,
-    "top": 0
   },
   "seancePush_chronoBeginPush_begin": {
     "opacity": 1,

@@ -34,5 +34,19 @@ export default dataPushHistory = [
       s4:"11",
       difficulty:"8",
       last_date:"18/06/2020",
+   },
+   {
+      id:4,
+      original_title:"Tractions",
+      type:"Pull",
+      s1:"12",
+      s2:"11",
+      s3:"10",
+      s4:"11",
+      s5:"10",
+      s6:"9",
+      difficulty:"7",
+      last_date:"18/06/2020",
    }
+
 ]

@@ -6,6 +6,8 @@ import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native'
 import Search from './Components/Search'
 import TrainingDetail from './Components/TrainingDetail'
 import SeancePush from './Components/SeancePush'
+import SeancePullLeg from './Components/SeancePullLeg'
+
 import HomePage from './Components/HomePage'
 import Notifications from './Components/Notifications'
 import LoginPage from './Components/LoginPage'
@@ -53,7 +55,12 @@ export default class App extends React.Component {
           <Stack.Screen
             name="SeancePush"
             component={SeancePush}
-            options={{ title: 'SeancePush nigga' }}
+            options={{ title: 'Début de séance' }}
+          />
+          <Stack.Screen
+            name="SeancePullLeg"
+            component={SeancePullLeg}
+            options={{ title: 'Début de séance Pull Leg' }}
           />
         </Stack.Navigator>
       </NavigationContainer>

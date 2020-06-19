@@ -3,6 +3,7 @@ import React from 'react'
 import { StyleSheet, View, Text, Button, FlatList } from 'react-native'
 import pushHistory from '../History/pushHistory'
 import SeancePush from '../Components/SeancePush'
+import SeancePullLeg from '../Components/SeancePullLeg'
 
 
 class TrainingDetail extends React.Component {
@@ -14,25 +15,20 @@ class TrainingDetail extends React.Component {
     }
   }
 
+  //FOnction permettant de naviguer sur la page SeancePush.js en envoyant l'id du training associé
   _startTraining(idTest){
     this.props.navigation.navigate("SeancePush", { idTest: idTest })
+    log.console("Lid du training selectionne :")
+    log.console(idTest)
   }
 
   render() {
     const { historyTraining, startTraining } = this.props;
-    console.log("on lance le log")
-    console.log(this.props)
     return (
       <View>
         <Text style={styles.titre}>Détail du training {this.props.route.params.titreTrainings} : </Text>
         <Text style={styles.finDeTexte}>{this.props.route.params.trainingContenu}</Text>
-
         <Button  title='Débuter la séance !' onPress={() => this._startTraining(3)}/>
-        <FlatList
-          data={pushHistory}
-          keyExtractor={(item) => item.id.toString()}
-          //renderItem={({item}) => <SeancePush LastTraining={item} displayDetailForTraining={this._startTraining}/>}
-        />
       </View>
     )
   }

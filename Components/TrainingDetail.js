@@ -7,23 +7,24 @@ import SeancePullLeg from '../Components/SeancePullLeg'
 
 
 class TrainingDetail extends React.Component {
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      isLoading: false, // Par défaut à false car il n'y a pas de chargement tant qu'on ne lance pas de recherche
+  // Fonction de debug, ne sert à rien pour l'appli en elle meme
+    _jeDebug(monParam){
+      console.log("fonction de debug result :");
+      console.log(monParam);
     }
-  }
 
-  //FOnction permettant de naviguer sur la page SeancePush.js en envoyant l'id du training associé
-  _startTraining(idTest){
-    this.props.navigation.navigate("SeancePush", { idTest: idTest })
+
+  //FOnction permettant de naviguer sur la page SeancePush.js ou SeancePull.js en fonction du training cliqué
+  _startTraining(typeTraining){
+      if (typeTraining =="Push") {
+        this.props.navigation.navigate("SeancePush", { typeTraining: typeTraining })
+      }
+      if (typeTraining =="Pull") {
+        this.props.navigation.navigate("SeancePullLeg", { typeTraining: typeTraining })
+      }
   }
 
   render() {
-    const { historyTraining, startTraining } = this.props;
-    console.log();
-    console.log(historyTraining);
     return (
       <View>
         <Text style={styles.titre}>Détail du training {this.props.route.params.titreTrainings} : </Text>
@@ -32,7 +33,7 @@ class TrainingDetail extends React.Component {
           data={trainingsHistory}
           keyExtractor={(item) => item.id.toString()}
         />
-        <Button  title='Débuter la séance !' onPress={() => this._startTraining(trainingsHistory.id)}/>
+        <Button  title='Débuter la séance !' onPress={() => this._startTraining(this.props.route.params.titreTrainings)}/>
       </View>
     )
   }

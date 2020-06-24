@@ -6,6 +6,7 @@ import {Svg, Defs, Pattern} from 'react-native-svg';
 import {Path as SvgPath} from 'react-native-svg';
 import {Text as SvgText} from 'react-native-svg';
 import {Image as SvgImage} from 'react-native-svg';
+import Timer from './Timer';
 
 export default class SeancePush extends Component {
 

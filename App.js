@@ -35,35 +35,39 @@ function MenuDeroulant(){
 export default class App extends React.Component {
   render() {
     return (
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={{ animationEnabled: false }}>
-          <Stack.Screen
-            name="Home"
-            component={MenuDeroulant}
-            options={{ title: 'Accueil' }}
-          />
-          <Stack.Screen
-            name="Search"
-            component={Search}
-            options={{ title: 'Selection du training' }}
-          />
-          <Stack.Screen
-            name="TrainingDetail"
-            component={TrainingDetail}
-            options={{ title: 'Détail du training' }}
-          />
-          <Stack.Screen
-            name="SeancePush"
-            component={SeancePush}
-            options={{ title: 'Début de séance' }}
-          />
-          <Stack.Screen
-            name="SeancePullLeg"
-            component={SeancePullLeg}
-            options={{ title: 'Début de séance Pull Leg' }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <Provider store={store}>
+        <PersistGate persistor={persistor}>
+          <NavigationContainer>
+            <Stack.Navigator screenOptions={{ animationEnabled: false }}>
+              <Stack.Screen
+                name="Home"
+                component={MenuDeroulant}
+                options={{ title: 'Accueil' }}
+              />
+              <Stack.Screen
+                name="Search"
+                component={Search}
+                options={{ title: 'Selection du training' }}
+              />
+              <Stack.Screen
+                name="TrainingDetail"
+                component={TrainingDetail}
+                options={{ title: 'Détail du training' }}
+              />
+              <Stack.Screen
+                name="SeancePush"
+                component={SeancePush}
+                options={{ title: 'Début de séance' }}
+              />
+              <Stack.Screen
+                name="SeancePullLeg"
+                component={SeancePullLeg}
+                options={{ title: 'Début de séance Pull Leg' }}
+              />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </PersistGate>
+      </Provider>
     )
   }
 }

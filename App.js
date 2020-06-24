@@ -20,7 +20,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
-// On crée le menu déroulant
+// On crée le menu déroulant "Hamburger"
 function MenuDeroulant(){
   return (
     <Drawer.Navigator initialRouteName="Search">

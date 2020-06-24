@@ -35,8 +35,6 @@ function MenuDeroulant(){
 export default class App extends React.Component {
   render() {
     return (
-      <Provider store={store}>
-        <PersistGate persistor={persistor}>
           <NavigationContainer>
             <Stack.Navigator screenOptions={{ animationEnabled: false }}>
               <Stack.Screen
@@ -66,8 +64,6 @@ export default class App extends React.Component {
               />
             </Stack.Navigator>
           </NavigationContainer>
-        </PersistGate>
-      </Provider>
     )
   }
 }

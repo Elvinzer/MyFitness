@@ -24,22 +24,22 @@ export default class SeancePush extends Component {
     const typeTraining = this.props.route.params.typeTraining;
 
     return (
-    <ScrollView data-layer="88a2e7ff-26bd-49a8-919e-b096694a0980" style={styles.seancePush}>
-        <ReactImage data-layer="cb7f9766-e118-40d7-8ebb-736b8421734b" source={require('../assets/backgroundScreenPush.png')} style={styles.seancePush_backgroundScreenPush} />
-        <Text data-layer="1bd16f22-00be-496a-bac0-9e319c1979ef" style={styles.seancePush_seancePushBiceps}>Séance push bras</Text>
-        <View data-layer="b2e59d69-50f8-499c-8ec8-dbfa6c4c4ac3" style={styles.seancePush_composant12}>
-            <View data-layer="408cb1fa-871d-471a-8ced-ef29d220113d" style={styles.seancePush_composant12_rectangle1}></View>
+    <View style={styles.seancePush}>
+        <ReactImage source={require('../assets/backgroundScreenPush.png')} style={styles.seancePush_backgroundScreenPush} />
+        <Text style={styles.seancePush_seancePushBiceps}>Séance push bras</Text>
+        <View style={styles.seancePush_composant12}>
+            <View style={styles.seancePush_composant12_rectangle1}></View>
         </View>
-        <Text data-layer="97a1833b-5aad-43fd-9680-b58a7c18f3b9" style={styles.seancePush_historiquesDernieresSeances}>Historiques dernières séances</Text>
+        <Text style={styles.seancePush_historiquesDernieresSeances}>Historiques dernières séances</Text>
 
         <TouchableOpacity style={styles.seancePush_chronoBeginPush} onPress={() => this.props.navigation.navigate("WorkoutInProgress", { typeTraining: typeTraining })}>
             <Svg style={styles.seancePush_chronoBeginPush_ellipse1} preserveAspectRatio="none" viewBox="-0.75 -0.75 129.5 129.5" fill="rgba(185, 255, 183, 1)"><SvgPath d="M 64 0 C 99.34622192382813 0 128 28.65377807617188 128 64 C 128 99.34622192382813 99.34622192382813 128 64 128 C 28.65377807617188 128 0 99.34622192382813 0 64 C 0 28.65377807617188 28.65377807617188 0 64 0 Z"  /></Svg>
             <Text style={styles.seancePush_chronoBeginPush_begin}>BEGIN</Text>
         </TouchableOpacity>
 
-        <Svg data-layer="d2ffc224-72ff-4bb3-90ec-d90e42c0a75f" style={styles.seancePush_ligne4} preserveAspectRatio="none" viewBox="0 -0.5 256 1" fill="transparent"><SvgPath d="M 0 0 L 256 0"  /></Svg>
-        <Svg data-layer="80c5dbaa-d2cb-42f3-95b3-eac2b289208b" style={styles.seancePush_polygone2} preserveAspectRatio="none" viewBox="-0.75 -0.75 23.5 17.5" fill="rgba(255, 255, 255, 1)"><SvgPath d="M 10.99999904632568 0 L 22 16 L 0 16 Z"  /></Svg>
-    </ScrollView>
+        <Svg style={styles.seancePush_ligne4} preserveAspectRatio="none" viewBox="0 -0.5 256 1" fill="transparent"><SvgPath d="M 0 0 L 256 0"  /></Svg>
+        <Svg style={styles.seancePush_polygone2} preserveAspectRatio="none" viewBox="-0.75 -0.75 23.5 17.5" fill="rgba(255, 255, 255, 1)"><SvgPath d="M 10.99999904632568 0 L 22 16 L 0 16 Z"  /></Svg>
+    </View>
     );
   }
 }
@@ -128,8 +128,8 @@ const styles = StyleSheet.create({
     "opacity": 1,
     "position": "absolute",
     "backgroundColor": "transparent",
-    "width": 128,
-    "height": 128,
+    width: screen.width / 2,
+    height: screen.width / 2,
     "left": 116,
     "top": 131
   },

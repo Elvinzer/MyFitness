@@ -7,6 +7,7 @@ import Search from './Components/Search'
 import TrainingDetail from './Components/TrainingDetail'
 import SeancePush from './Components/SeancePush'
 import SeancePullLeg from './Components/SeancePullLeg'
+import WorkoutInProgress from './Components/WorkoutInProgress'
 
 import HomePage from './Components/HomePage'
 import Notifications from './Components/Notifications'
@@ -61,6 +62,11 @@ export default class App extends React.Component {
                 name="SeancePullLeg"
                 component={SeancePullLeg}
                 options={{ title: 'Début de séance Pull Leg' }}
+              />
+              <Stack.Screen
+                name="WorkoutInProgress"
+                component={WorkoutInProgress}
+                options={{ title: 'Séance en cours' }}
               />
             </Stack.Navigator>
           </NavigationContainer>

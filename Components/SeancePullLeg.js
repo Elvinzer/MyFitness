@@ -12,63 +12,15 @@ export default class SeancePull extends Component {
   constructor(props) {
       super(props);
       this.state = {
-
+        sceance : "Pull",
       };
-  }
-
-
-  handlePress(target, owner) {
-    if (this.props.onPress) {
-        let name;
-        let id;
-        let index = -1;
-        if (target.search("::") > -1) {
-            const varCount = target.split("::").length;
-            if (varCount === 2) {
-                name = target.split("::")[0];
-                id = target.split("::")[1];
-            } else if (varCount === 3) {
-                name = target.split("::")[0];
-                index = parseInt(target.split("::")[1]);
-                id = target.split("::")[2];
-            }
-        } else {
-            name = target;
-        }
-        this.props.onPress({ type: 'button', name: name, index: index, id: id, owner: owner });
-    }
-  }
-
-  handleChangeTextinput(name, value) {
-      let id;
-      let index = -1;
-      if (name.search('::') > -1) {
-          const varCount = name.split("::").length;
-          if (varCount === 2) {
-              name = name.split("::")[0];
-              id = name.split("::")[1];
-          } else if (varCount === 3) {
-              name = name.split("::")[0];
-              index = name.split("::")[1];
-              id = name.split("::")[2];
-          }
-      } else {
-          name = name;
-      }
-      let state = this.state;
-      state[name.split('::').join('')] = value;
-      this.setState(state, () => {
-          if (this.props.onChange) {
-              this.props.onChange({ type: 'textinput', name: name, value: value, index: index, id: id });
-          }
-      });
   }
 
   render() {
 
     return (
     <ScrollView data-layer="40c007c9-ac53-424c-83f5-e94d2de601df" style={styles.seancePull}>
-        <ReactImage data-layer="4a3e41be-6f1d-49f5-b91d-27eb61d20374" source={require('../assets/backgroundScreenPush.png')} style={styles.seancePull_rectangle13} />
+        <ReactImage data-layer="4a3e41be-6f1d-49f5-b91d-27eb61d20374" source={require('../assets/backgroundScreenPush.png')} style={styles.  background_screen} />
         <Text data-layer="18e56257-9a01-48a8-8977-f26405ef343c" style={styles.seancePull_seancePullLeg}>Séance Pull Leg</Text>
         <Svg data-layer="c7f5cbe4-c1d1-44f4-804a-79bea81427cc" style={styles.seancePull_polygone2} preserveAspectRatio="none" viewBox="-0.75 -0.75 23.5 17.5" fill="rgba(255, 255, 255, 1)"><SvgPath d="M 10.99999904632568 0 L 22 16 L 0 16 Z"  /></Svg>
         <View data-layer="4291ebfc-025b-412f-b069-ad0ab7112ddb" style={styles.seancePull_composant13}>
@@ -100,7 +52,7 @@ const styles = StyleSheet.create({
     "width": 359,
     "height": 639
   },
-  "seancePull_rectangle13": {
+  "  background_screen": {
     "opacity": 1,
     "position": "relative",
     "width": 360,
@@ -167,17 +119,18 @@ const styles = StyleSheet.create({
     "fontStyle": "normal",
     "textAlign": "left",
     "width": 261,
-    "height": 27,
+    "height": 40,
     "left": 49,
     "top": 459
   },
+
   "seancePull_ellipse1": {
     "opacity": 1,
     "position": "absolute",
     "width": 128,
     "height": 128,
     "left": 124,
-    "top": 182
+    "top": 110
   },
   "seancePull_begin": {
     "opacity": 1,
@@ -191,8 +144,9 @@ const styles = StyleSheet.create({
     "width": 59,
     "height": 35,
     "left": 158,
-    "top": 229
+    "top": 157
   },
+
   "seancePull_ligne4": {
     "opacity": 1,
     "position": "absolute",

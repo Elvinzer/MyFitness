@@ -6,7 +6,6 @@ import {Svg, Defs, Pattern} from 'react-native-svg';
 import {Path as SvgPath} from 'react-native-svg';
 import {Text as SvgText} from 'react-native-svg';
 import {Image as SvgImage} from 'react-native-svg';
-import Timer from './Timer';
 
 export default class SeancePush extends Component {
 
@@ -14,65 +13,18 @@ export default class SeancePush extends Component {
       super(props);
       this.state = {
         isLoading : false,
-        test : false
+        test : false,
+        sceance : "Push"
       };
   }
 
-
-  handlePress(target, owner) {
-    if (this.props.onPress) {
-        let name;
-        let id;
-        let index = -1;
-        if (target.search("::") > -1) {
-            const varCount = target.split("::").length;
-            if (varCount === 2) {
-                name = target.split("::")[0];
-                id = target.split("::")[1];
-            } else if (varCount === 3) {
-                name = target.split("::")[0];
-                index = parseInt(target.split("::")[1]);
-                id = target.split("::")[2];
-            }
-        } else {
-            name = target;
-        }
-        this.props.onPress({ type: 'button', name: name, index: index, id: id, owner: owner });
-    }
-  }
-
-  handleChangeTextinput(name, value) {
-      let id;
-      let index = -1;
-      if (name.search('::') > -1) {
-          const varCount = name.split("::").length;
-          if (varCount === 2) {
-              name = name.split("::")[0];
-              id = name.split("::")[1];
-          } else if (varCount === 3) {
-              name = name.split("::")[0];
-              index = name.split("::")[1];
-              id = name.split("::")[2];
-          }
-      } else {
-          name = name;
-      }
-      let state = this.state;
-      state[name.split('::').join('')] = value;
-      this.setState(state, () => {
-          if (this.props.onChange) {
-              this.props.onChange({ type: 'textinput', name: name, value: value, index: index, id: id });
-          }
-      });
-  }
-
   render() {
-
+    const typeTraining = this.props.route.params.typeTraining;
+    console.log(typeTraining);
     return (
     <ScrollView data-layer="88a2e7ff-26bd-49a8-919e-b096694a0980" style={styles.seancePush}>
         <ReactImage data-layer="cb7f9766-e118-40d7-8ebb-736b8421734b" source={require('../assets/backgroundScreenPush.png')} style={styles.seancePush_backgroundScreenPush} />
-        <Text data-layer="1bd16f22-00be-496a-bac0-9e319c1979ef" style={styles.seancePush_seancePushBiceps}>Séance push bras
-</Text>
+        <Text data-layer="1bd16f22-00be-496a-bac0-9e319c1979ef" style={styles.seancePush_seancePushBiceps}>Séance push bras</Text>
         <View data-layer="b2e59d69-50f8-499c-8ec8-dbfa6c4c4ac3" style={styles.seancePush_composant12}>
             <View data-layer="408cb1fa-871d-471a-8ced-ef29d220113d" style={styles.seancePush_composant12_rectangle1}></View>
         </View>

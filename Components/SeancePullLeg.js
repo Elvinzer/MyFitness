@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from "prop-types";
-import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight} from 'react-native';
+import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight, TouchableOpacity} from 'react-native';
 import {Image as ReactImage} from 'react-native';
 import Svg, {Defs, Pattern} from 'react-native-svg';
 import {Path as SvgPath} from 'react-native-svg';
@@ -17,19 +17,23 @@ export default class SeancePull extends Component {
   }
 
   render() {
-
+    const typeTraining = this.props.route.params.typeTraining;
     return (
-    <ScrollView data-layer="40c007c9-ac53-424c-83f5-e94d2de601df" style={styles.seancePull}>
-        <ReactImage data-layer="4a3e41be-6f1d-49f5-b91d-27eb61d20374" source={require('../assets/backgroundScreenPush.png')} style={styles.  background_screen} />
-        <Text data-layer="18e56257-9a01-48a8-8977-f26405ef343c" style={styles.seancePull_seancePullLeg}>Séance Pull Leg</Text>
-        <Svg data-layer="c7f5cbe4-c1d1-44f4-804a-79bea81427cc" style={styles.seancePull_polygone2} preserveAspectRatio="none" viewBox="-0.75 -0.75 23.5 17.5" fill="rgba(255, 255, 255, 1)"><SvgPath d="M 10.99999904632568 0 L 22 16 L 0 16 Z"  /></Svg>
-        <View data-layer="4291ebfc-025b-412f-b069-ad0ab7112ddb" style={styles.seancePull_composant13}>
-            <View data-layer="1dfe73f6-52d2-42a1-b16e-4125256ed7b0" style={styles.seancePull_composant13_rectangle1}></View>
+    <ScrollView style={styles.seancePull}>
+        <ReactImage source={require('../assets/backgroundScreenPush.png')} style={styles.  background_screen} />
+        <Text style={styles.seancePull_seancePullLeg}>Séance Pull Leg</Text>
+        <Svg style={styles.seancePull_polygone2} viewBox="-0.75 -0.75 23.5 17.5" fill="rgba(255, 255, 255, 1)"><SvgPath d="M 10.99999904632568 0 L 22 16 L 0 16 Z"  /></Svg>
+        <View style={styles.seancePull_composant13}>
+          <View style={styles.seancePull_composant13_rectangle1}></View>
         </View>
-        <Text data-layer="b0ee44be-695d-46d0-a663-6c2a5b6beb16" style={styles.seancePull_historiquesDernieresSeances}>Historiques dernières séances</Text>
-        <Svg data-layer="51f159a7-6b7c-43e6-bb6e-8d685de152a8" style={styles.seancePull_ellipse1} preserveAspectRatio="none" viewBox="-0.75 -0.75 129.5 129.5" fill="rgba(185, 255, 183, 1)"><SvgPath d="M 64 0 C 99.34622192382813 0 128 28.65377807617188 128 64 C 128 99.34622192382813 99.34622192382813 128 64 128 C 28.65377807617188 128 0 99.34622192382813 0 64 C 0 28.65377807617188 28.65377807617188 0 64 0 Z"  /></Svg>
-        <Text data-layer="9cb962d2-af87-48bf-972a-a54f8e1071dd" style={styles.seancePull_begin}>BEGIN</Text>
-        <Svg data-layer="7346be3d-42f6-4283-a8a0-5ecea86e669b" style={styles.seancePull_ligne4} preserveAspectRatio="none" viewBox="0 -0.5 224 1" fill="transparent"><SvgPath d="M 0 0 L 224 0"  /></Svg>
+        <Text style={styles.seancePull_historiquesDernieresSeances}>Historiques dernières séances</Text>
+
+        <TouchableOpacity style={styles.seancePull_ellipse1} onPress={() => this.props.navigation.navigate("WorkoutInProgress", { typeTraining: typeTraining })}>
+          <Svg style={styles.seancePull_ellipse1} viewBox="-0.75 -0.75 129.5 129.5" fill="rgba(185, 255, 183, 1)"><SvgPath d="M 64 0 C 99.34622192382813 0 128 28.65377807617188 128 64 C 128 99.34622192382813 99.34622192382813 128 64 128 C 28.65377807617188 128 0 99.34622192382813 0 64 C 0 28.65377807617188 28.65377807617188 0 64 0 Z"  /></Svg>
+          <Text style={styles.seancePull_begin}>BEGIN</Text>
+        </TouchableOpacity>
+
+        <Svg style={styles.seancePull_ligne4} viewBox="0 -0.5 224 1" fill="transparent"><SvgPath d="M 0 0 L 224 0"  /></Svg>
     </ScrollView>
     );
   }
@@ -51,6 +55,15 @@ const styles = StyleSheet.create({
     "backgroundColor": "rgba(255, 255, 255, 1)",
     "width": 359,
     "height": 639
+  },
+  "seancePull_chronoBeginPull": {
+    "opacity": 1,
+    "position": "absolute",
+    "backgroundColor": "transparent",
+    "width": 128,
+    "height": 128,
+    "left": 80,
+    "top": 110
   },
   "  background_screen": {
     "opacity": 1,

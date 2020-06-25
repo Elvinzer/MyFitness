@@ -17,6 +17,7 @@ export default class SeanceEnCours extends Component {
   }
 
   render() {
+    const typeTraining = this.props.route.params.typeTraining;
 
     return (
     <ScrollView style={styles.seanceEnCours}>

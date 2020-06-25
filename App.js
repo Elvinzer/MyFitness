@@ -8,6 +8,7 @@ import TrainingDetail from './Components/TrainingDetail'
 import SeancePush from './Components/SeancePush'
 import SeancePullLeg from './Components/SeancePullLeg'
 import WorkoutInProgress from './Components/WorkoutInProgress'
+import MyTimer from './Components/MyTimer'
 
 import HomePage from './Components/HomePage'
 import Notifications from './Components/Notifications'
@@ -67,6 +68,11 @@ export default class App extends React.Component {
                 name="WorkoutInProgress"
                 component={WorkoutInProgress}
                 options={{ title: 'Séance en cours' }}
+              />
+              <Stack.Screen
+                name="MyTimer"
+                component={MyTimer}
+                options={{ title: 'My Timer' }}
               />
             </Stack.Navigator>
           </NavigationContainer>

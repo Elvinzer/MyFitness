@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, StatusBar, TouchableOpacity, Dimensions } from 'react-native';
 
 const screen = Dimensions.get('window');
 
@@ -9,7 +11,7 @@ const getRemaining = (time) => {
     return { mins: formatNumber(mins), secs: formatNumber(secs) };
 }
 
-export default function myTimer() {
+export default function MyTimer() {
   const [remainingSecs, setRemainingSecs] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const { mins, secs } = getRemaining(remainingSecs);

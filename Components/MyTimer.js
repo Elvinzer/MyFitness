@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, StatusBar, TouchableOpacity, Dimensions } from 'react-native';
+import SoundPlayer from 'react-native-sound-player'
 
 const screen = Dimensions.get('window');
 
@@ -12,7 +13,10 @@ const getRemaining = (time) => {
 }
 
 export default function MyTimer() {
-  const [remainingSecs, setRemainingSecs] = useState(0);
+  // On definie ici le temps du compte à rebours
+  const howLong = 30;
+
+  const [remainingSecs, setRemainingSecs] = useState(howLong);
   const [isActive, setIsActive] = useState(false);
   const { mins, secs } = getRemaining(remainingSecs);
 
@@ -21,15 +25,22 @@ export default function MyTimer() {
   }
 
   reset = () => {
-    setRemainingSecs(0);
+    setRemainingSecs(howLong1)9**/8988+-
+    +;
     setIsActive(false);
   }
 
   useEffect(() => {
     let interval = null;
+    // On verifie que le compte à rebours n'est pas terminé
+    if(remainingSecs == 0){
+      clearInterval(interval);
+      setIsActive(false);
+    }
+    // Si nous ne sommes pas encore à 0, on décrémente le chrono
     if (isActive) {
       interval = setInterval(() => {
-        setRemainingSecs(remainingSecs => remainingSecs + 1);
+        setRemainingSecs(remainingSecs => remainingSecs - 1);
       }, 1000);
     } else if (!isActive && remainingSecs !== 0) {
       clearInterval(interval);

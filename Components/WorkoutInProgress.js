@@ -6,6 +6,7 @@ import Svg, {Defs, Pattern} from 'react-native-svg';
 import {Path as SvgPath} from 'react-native-svg';
 import {Text as SvgText} from 'react-native-svg';
 import {Image as SvgImage} from 'react-native-svg';
+import MyTimer from './MyTimer'
 
 const screen = Dimensions.get('window');
 
@@ -19,7 +20,7 @@ export default class SeanceEnCours extends Component {
   }
 
   render() {
-    const typeTraining = this.props.route.params.titreTrainings;
+    const typeTraining = this.props.route.params.typeTraining;
     console.log("seance en cours : " + typeTraining)
     return (
     <View style={styles.seanceEnCours}>
@@ -45,6 +46,9 @@ export default class SeanceEnCours extends Component {
             <Svg style={styles.seanceEnCours_chrono_ellipse2} preserveAspectRatio="none" viewBox="-0.75 -0.75 99.5 99.5" fill="rgba(187, 223, 255, 1)"><SvgPath d="M 49 0 C 76.06195068359375 0 98 21.93804931640625 98 49 C 98 76.06195068359375 76.06195068359375 98 49 98 C 21.93804931640625 98 0 76.06195068359375 0 49 C 0 21.93804931640625 21.93804931640625 0 49 0 Z"  /></Svg>
             <Text style={styles.seanceEnCours_chrono_x30}>30''</Text>
         </View>
+
+        
+
         <Text style={styles.seanceEnCours_tempsDeRecuperation}>Temps de récupération</Text>
         <Svg style={styles.seanceEnCours_ligne3} preserveAspectRatio="none" viewBox="0 -0.5 107 1" fill="transparent"><SvgPath d="M 0 0 L 107 0"  /></Svg>
         <ReactImage source={require('../assets/x6346342297menuBarIconWhiteClipartPngDownload3.png')} style={styles.seanceEnCours_x6346342297menuBarIconWhiteClipartPngDownload3} />
@@ -67,6 +71,13 @@ const styles = StyleSheet.create({
     "position": "relative",
     "width": 360,
     "height": 637,
+  },
+  "seanceEnCours_externalChrono": {
+    "opacity": 1,
+    "position": "absolute",
+    "width": 360,
+    "height": 637,
+    top: 400
   },
   "seanceEnCours_title": {
     "opacity": 1,

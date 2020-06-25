@@ -2,6 +2,7 @@
 import React from 'react'
 import 'react-native-gesture-handler';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native'
+
 // Import des Components customs
 import Search from './Components/Search'
 import TrainingDetail from './Components/TrainingDetail'
@@ -35,6 +36,7 @@ function MenuDeroulant(){
 }
 
 export default class App extends React.Component {
+
   render() {
     return (
           <NavigationContainer>

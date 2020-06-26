@@ -25,39 +25,26 @@ export default class SeancePull extends Component {
 
     return (
     <View style={styles.seancePull}>
-        <ReactImage source={require('../assets/backgroundScreenPush.png')} style={styles.seancePull_backgroundScreenPull} />
         <Text style={styles.seancePull_seancePullBiceps}>Séance Pull Leg</Text>
         <View style={styles.seancePull_composant12}>
             <View style={styles.seancePull_composant12_rectangle1}></View>
         </View>
         <Text style={styles.seancePull_historiquesDernieresSeances}>Historiques dernières séances</Text>
-
         <TouchableOpacity style={styles.seancePull_chronoBeginPull} onPress={() => this.props.navigation.navigate("WorkoutInProgress", { typeTraining: typeTraining })}>
             <Svg style={styles.seancePull_chronoBeginPull_ellipse1} preserveAspectRatio="none" viewBox="-0.75 -0.75 129.5 129.5" fill="rgba(185, 255, 183, 1)"><SvgPath d="M 64 0 C 99.34622192382813 0 128 28.65377807617188 128 64 C 128 99.34622192382813 99.34622192382813 128 64 128 C 28.65377807617188 128 0 99.34622192382813 0 64 C 0 28.65377807617188 28.65377807617188 0 64 0 Z"  /></Svg>
             <Text style={styles.seancePull_chronoBeginPull_begin}>BEGIN</Text>
         </TouchableOpacity>
-
-        <Svg style={styles.seancePull_ligne4} preserveAspectRatio="none" viewBox="0 -0.5 256 1" fill="transparent"><SvgPath d="M 0 0 L 256 0"  /></Svg>
-        <Svg style={styles.seancePull_polygone2} preserveAspectRatio="none" viewBox="-0.75 -0.75 23.5 17.5" fill="rgba(255, 255, 255, 1)"><SvgPath d="M 10.99999904632568 0 L 22 16 L 0 16 Z"  /></Svg>
+        <Svg style={styles.triangle_titre} preserveAspectRatio="none" viewBox="-0.75 -0.75 23.5 17.5" fill="rgba(255, 255, 255, 1)"><SvgPath d="M 10.99999904632568 0 L 22 16 L 0 16 Z"  /></Svg>
     </View>
     );
   }
 }
 
-SeancePull.propTypes = {
-
-}
-
-SeancePull.defaultProps = {
-
-}
-
-
 const styles = StyleSheet.create({
   "seancePull": {
     "opacity": 1,
     "position": "relative",
-    "backgroundColor": "rgba(255, 255, 255, 1)",
+    backgroundColor: '#07121B',
     "paddingLeft": 0,
     "width": 360,
     "height": 600,
@@ -130,8 +117,8 @@ const styles = StyleSheet.create({
     "backgroundColor": "transparent",
     width: screen.width / 2,
     height: screen.width / 2,
-    "left": 116,
-    "top": 131
+    right: screen.width / 5.5,
+    top: screen.width / 3,
   },
   "seancePull_chronoBeginPull_ellipse1": {
     "opacity": 1,
@@ -161,7 +148,7 @@ const styles = StyleSheet.create({
     "height": 1,
     "top": 47.5
   },
-  "seancePull_polygone2": {
+  "triangle_titre": {
     "opacity": 1,
     "position": "absolute",
     "width": 22,

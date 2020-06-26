@@ -20,12 +20,13 @@ export default function MyTimer() {
   const [isActive, setIsActive] = useState(false);
   const { mins, secs } = getRemaining(remainingSecs);
 
+  // On bascule le chrono comme inactif
   toggle = () => {
     setIsActive(!isActive);
   }
 
   reset = () => {
-    setRemainingSecs(0);
+    setRemainingSecs(howLong);
     setIsActive(false);
   }
 
@@ -41,6 +42,7 @@ export default function MyTimer() {
       interval = setInterval(() => {
         setRemainingSecs(remainingSecs => remainingSecs - 1);
       }, 1000);
+
     } else if (!isActive && remainingSecs !== 0) {
       clearInterval(interval);
     }

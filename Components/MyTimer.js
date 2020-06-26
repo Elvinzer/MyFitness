@@ -13,7 +13,7 @@ const getRemaining = (time) => {
 }
 
 export default function MyTimer() {
-  // On definie ici le temps du compte à rebours
+  // On definie ici le temps du compte à rebours en seconde
   const howLong = 30;
 
   const [remainingSecs, setRemainingSecs] = useState(howLong);
@@ -26,12 +26,7 @@ export default function MyTimer() {
   }
 
   reset = () => {
-<<<<<<< HEAD
     setRemainingSecs(howLong);
-=======
-    setRemainingSecs(howLong1)9**/8988+-
-    +;
->>>>>>> a6f01af56540c0fd5de9a82642741a26cce2fc71
     setIsActive(false);
   }
 

@@ -39,18 +39,9 @@ _setTimer(){
             <Text style={styles.seanceEnCours_repAExecuter_x12}>12</Text>
         </View>
 
-
-
-        <TouchableOpacity style={styles.seanceEnCours_serieTerminee} onPress={() => this.props.navigation.navigate("MyTimer")}>
-            <View style={styles.seanceEnCours_serieTerminee_rectangle8}></View>
-            <Text style={styles.seanceEnCours_serieTerminee_jaiFiniMaSerie}>J'ai fini ma série</Text>
-        </TouchableOpacity>
-
-
         <Text style={styles.seanceEnCours_tempsDeRecuperation}>Temps de récupération</Text>
-        <View>
-            <Text style={styles.seanceEnCours_chrono}> ici un chrono </Text>
-        </View>
+        <MyTimer style={styles.monTimer}>
+        </MyTimer>
     </View>
     );
   }
@@ -66,7 +57,6 @@ const styles = StyleSheet.create({
     paddingTop : 8
   },
   "seanceEnCours_title": {
-    flex : 0.07,
     borderBottomWidth : 1,
     borderBottomColor : 'white',
     color: 'white',
@@ -81,7 +71,6 @@ const styles = StyleSheet.create({
     top: 400,
   },
   "seanceEnCours_exerciceEnCoursEtSeries": {
-    flex : 0.15,
     justifyContent : 'space-around',
     alignItems : 'center',
     textAlign : 'center',
@@ -103,14 +92,12 @@ const styles = StyleSheet.create({
     textAlign: 'left',
   },
   "seanceEnCours_repetitionsAExecuter": {
-    flex: 0.06,
     color: 'white',
     fontSize: 20,
     textAlign: "center",
     padding : 10,
   },
   "seanceEnCours_repAExecuter": {
-    flex : 0.11,
     flexDirection : 'row',
     justifyContent : 'center',
     opacity: 1,
@@ -131,7 +118,6 @@ const styles = StyleSheet.create({
     "fontSize": 20,
   },
   "seanceEnCours_serieTerminee": {
-    flex : 0.12,
     justifyContent : "center",
     alignSelf : 'center',
     opacity: 1,
@@ -142,51 +128,11 @@ const styles = StyleSheet.create({
     borderBottomWidth : 1,
     borderBottomColor : 'white',
   },
-  "seanceEnCours_serieTerminee_rectangle8": {
-    opacity: 1,
-    position: "absolute",
-    backgroundColor: "rgba(185, 255, 183, 1)",
-    borderTopWidth: 1,
-    borderTopColor: "rgba(112, 112, 112, 1)",
-    borderRightWidth: 1,
-    borderRightColor: "rgba(112, 112, 112, 1)",
-    borderBottomWidth: 1,
-    borderBottomColor: "rgba(112, 112, 112, 1)",
-    borderLeftWidth: 1,
-    borderLeftColor: "rgba(112, 112, 112, 1)",
-    width: 209,
-    height: 60,
-  },
-  "seanceEnCours_serieTerminee_jaiFiniMaSerie": {
-    "opacity": 1,
-    "position": "absolute",
-    "backgroundColor": "rgba(255, 255, 255, 0)",
-    "color": "rgba(112, 112, 112, 1)",
-    "fontSize": 20,
-    "fontWeight": "400",
-    "fontStyle": "normal",
-
-    "textAlign": "left",
-    "width": 147,
-    "height": 28,
-    "left": 31,
-    "top": 16
-  },
-  "seanceEnCours_ligne2": {
-    "opacity": 1,
-    "position": "absolute",
-    "width": 107,
-    "height": 1,
-    "left": 135.5,
-    "top": 204
-  },
   "seanceEnCours_chrono": {
     position : 'relative',
     color : 'white',
     textAlign : 'center',
     top : 15,
-    borderBottomWidth : 1,
-    borderBottomColor : 'white',
   },
   "seanceEnCours_tempsDeRecuperation": {
     "opacity": 1,
@@ -197,6 +143,7 @@ const styles = StyleSheet.create({
     "fontStyle": "normal",
     "textAlign": "left",
     textAlign : 'center',
-    marginTop  : 20
+    marginTop  : 20,
+    paddingBottom : 20,
   }
 });

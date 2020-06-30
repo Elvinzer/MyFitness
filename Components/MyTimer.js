@@ -54,6 +54,12 @@ export default function MyTimer() {
     <View style={styles.container}>
       <StatusBar barStyle="light-content" />
       <Text style={styles.timerText}>{`${mins}:${secs}`}</Text>
+      <TouchableOpacity onPress={this.toggle} style={styles.button}>
+          <Text style={styles.buttonText}>{isActive ? 'Pause' : 'Repos'}</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={this.reset} style={[styles.button, styles.buttonReset]}>
+          <Text style={[styles.buttonText, styles.buttonTextReset]}>Reset</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -64,9 +70,29 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  button: {
+      borderWidth: 10,
+      borderColor: '#B9AAFF',
+      width: screen.width / 4,
+      height: screen.width / 4,
+      borderRadius: screen.width / 4,
+      alignItems: 'center',
+      justifyContent: 'center'
+  },
+  buttonText: {
+      fontSize: 16,
+      color: '#B9AAFF'
+  },
   timerText: {
       color: '#fff',
-      fontSize: 40,
+      fontSize: 32,
       marginBottom: 20
+  },
+  buttonReset: {
+      marginTop: 20,
+      borderColor: "#FF851B"
+  },
+  buttonTextReset: {
+    color: "#FF851B"
   }
 });

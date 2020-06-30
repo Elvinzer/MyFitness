@@ -33,7 +33,9 @@ class TrainingDetail extends React.Component {
           data={trainingsHistory}
           keyExtractor={(item) => item.id.toString()}
         />
-        <Button  style={styles.boutonDebuter} title='Débuter la séance !' onPress={() => this._startTraining(this.props.route.params.titreTrainings)}/>
+        <View style={styles.boutonDebuter}>
+          <Button title='Débuter la séance !' onPress={() => this._startTraining(this.props.route.params.titreTrainings)}/>
+        </View>
       </View>
     )
   }
@@ -41,27 +43,27 @@ class TrainingDetail extends React.Component {
 
 const styles = StyleSheet.create({
   main_container: {
-    flex: 0.4,
+    flex: 0.7,
     flexDirection : 'column',
     alignItems : 'center'
   },
   titre:{
-    flex: 1,
-    alignItems: 'center',
+    flex: 0.2,
+    flexDirection : 'row',
     textAlign : 'center',
     fontSize : 18,
     borderBottomWidth : 1,
     borderBottomColor : 'grey',
-
+    paddingTop : 15
   },
   texteDescription:{
-    flex: 2,
     textAlign: 'center',
     marginTop : 20,
+    fontSize : 16,
   },
   boutonDebuter:{
-    flex: 3,
-    backgroundColor : 'black',
+    flex : 1,
+
   }
 })
 

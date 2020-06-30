@@ -26,14 +26,14 @@ class TrainingDetail extends React.Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.main_container}>
         <Text style={styles.titre}>Détail du training {this.props.route.params.titreTrainings} : </Text>
-        <Text style={styles.finDeTexte}>{this.props.route.params.trainingContenu}</Text>
+        <Text style={styles.texteDescription}>{this.props.route.params.trainingContenu}</Text>
         <FlatList
           data={trainingsHistory}
           keyExtractor={(item) => item.id.toString()}
         />
-        <Button  title='Débuter la séance !' onPress={() => this._startTraining(this.props.route.params.titreTrainings)}/>
+        <Button  style={styles.boutonDebuter} title='Débuter la séance !' onPress={() => this._startTraining(this.props.route.params.titreTrainings)}/>
       </View>
     )
   }
@@ -41,13 +41,27 @@ class TrainingDetail extends React.Component {
 
 const styles = StyleSheet.create({
   main_container: {
-    flex: 1,
+    flex: 0.4,
+    flexDirection : 'column',
+    alignItems : 'center'
   },
   titre:{
-    paddingBottom : 20
+    flex: 1,
+    alignItems: 'center',
+    textAlign : 'center',
+    fontSize : 18,
+    borderBottomWidth : 1,
+    borderBottomColor : 'grey',
+
   },
-  finDeTexte:{
-    paddingBottom : 20
+  texteDescription:{
+    flex: 2,
+    textAlign: 'center',
+    marginTop : 20,
+  },
+  boutonDebuter:{
+    flex: 3,
+    backgroundColor : 'black',
   }
 })
 

@@ -1,113 +1,96 @@
-import React, { Component } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
-import Audio  from 'expo-av';
-import Constants from 'expo-constants';
+// App.js
+import React from 'react'
+import 'react-native-gesture-handler';
+import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native'
+import SoundPlayer from 'react-native-sound-player'
 
-// https://github.com/expo/expo/issues/1141
+// Import des Components customs
+import Search from './Components/Search'
+import TrainingDetail from './Components/TrainingDetail'
+import SeancePush from './Components/SeancePush'
+import SeancePullLeg from './Components/SeancePullLeg'
+import WorkoutInProgress from './Components/WorkoutInProgress'
+import MyTimer from './Components/MyTimer'
 
-const source = require('./assets/backgroundMusic.mp3');
+import HomePage from './Components/HomePage'
+import Notifications from './Components/Notifications'
+import LoginPage from './Components/LoginPage'
+// Import de la "navigation"
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+// Import du moduble permettant d'utiliser le menu de coté 'Hamburger'
+import { createDrawerNavigator } from '@react-navigation/drawer';
+// On initialise les constantes de menu cliquable
+const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
-export default class App extends Component {
-  state = {
-    playingStatus: "nosound",
-  };
+// On crée le menu déroulant "Hamburger"
+function MenuDeroulant(){
+  return (
+    <Drawer.Navigator initialRouteName="Search">
+      <Drawer.Screen name="Accueil" component={Search} />
+      <Drawer.Screen name="Page Home" component={HomePage}/>
+      <Drawer.Screen name="Notifications" component={Notifications}/>
+      <Drawer.Screen name="Login" component={LoginPage}/>
+    </Drawer.Navigator>
+  )
+}
 
-  async _playRecording() {
-    const { sound } = await Audio.Sound.create(
-      source,
-      {
-        shouldPlay: true,
-        isLooping: true,
-      },
-      this._updateScreenForSoundStatus,
-    );
-    this.sound = sound;
-    this.setState({
-      playingStatus: 'playing'
-    });
-  }
-
-  _updateScreenForSoundStatus = (status) => {
-    if (status.isPlaying && this.state.playingStatus !== "playing") {
-      this.setState({ playingStatus: "playing" });
-    } else if (!status.isPlaying && this.state.playingStatus === "playing") {
-      this.setState({ playingStatus: "donepause" });
-    }
-  };
-
-  async _pauseAndPlayRecording() {
-    if (this.sound != null) {
-      if (this.state.playingStatus == 'playing') {
-        console.log('pausing...');
-        await this.sound.pauseAsync();
-        console.log('paused!');
-        this.setState({
-          playingStatus: 'donepause',
-        });
-      } else {
-        console.log('playing...');
-        await this.sound.playAsync();
-        console.log('playing!');
-        this.setState({
-          playingStatus: 'playing',
-        });
-      }
-    }
-  }
-
-  _syncPauseAndPlayRecording() {
-    if (this.sound != null) {
-      if (this.state.playingStatus == 'playing') {
-        this.sound.pauseAsync();
-      } else {
-        this.sound.playAsync();
-      }
-    }
-  }
-
-  _playAndPause = () => {
-    switch (this.state.playingStatus) {
-      case 'nosound':
-        this._playRecording();
-        break;
-      case 'donepause':
-      case 'playing':
-        this._pauseAndPlayRecording();
-        break;
-    }
-  }
+export default class App extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <TouchableOpacity style={styles.button} onPress={this._playAndPause}>
-            <Text style={styles.buttonText}>
-              {this.state.playingStatus}
-            </Text>
-          </TouchableOpacity>
-      </View>
-    );
+          <NavigationContainer>
+            <Stack.Navigator screenOptions={{ animationEnabled: false }}>
+              <Stack.Screen
+                name="Home"
+                component={MenuDeroulant}
+                options={{ title: 'Accueil' }}
+              />
+              <Stack.Screen
+                name="Search"
+                component={Search}
+                options={{ title: 'Selection du training' }}
+              />
+              <Stack.Screen
+                name="TrainingDetail"
+                component={TrainingDetail}
+                options={{ title: 'Détail du training' }}
+              />
+              <Stack.Screen
+                name="SeancePush"
+                component={SeancePush}
+                options={{ title: 'Début de séance' }}
+              />
+              <Stack.Screen
+                name="SeancePullLeg"
+                component={SeancePullLeg}
+                options={{ title: 'Début de séance Pull Leg' }}
+              />
+              <Stack.Screen
+                name="WorkoutInProgress"
+                component={WorkoutInProgress}
+                options={{ title: 'Séance en cours' }}
+              />
+              <Stack.Screen
+                name="MyTimer"
+                component={MyTimer}
+                options={{ title: 'My Timer' }}
+              />
+            </Stack.Navigator>
+          </NavigationContainer>
+    )
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#000',
-    paddingTop: Constants.statusBarHeight,
+  menu_deroulant: {
+  backgroundColor: 'red'
   },
-  button: {
-    width: 256,
-    height: 256/1.618,
+  image: {
+    width: 120,
+    height: 180,
     margin: 5,
-    borderRadius: 10,
-    backgroundColor: '#fff',
-    justifyContent: 'center',
-  },
-  buttonText: {
-    textAlign: 'center',
-    backgroundColor: 'transparent',
-  },
-});
+    backgroundColor: 'gray'
+  }
+})

@@ -5,7 +5,7 @@ import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native'
 
 class TrainingItem extends React.Component {
   render() {
-
+      //On récupère les paramètres passés par la flattlist de Search.js
       const { training, displayDetailForTraining } = this.props;
       //console.log(this.props)
       return (

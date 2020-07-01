@@ -27,7 +27,7 @@ export default class SeanceEnCours extends Component {
         <Text style={styles.seanceEnCours_title}>Séance {typeTraining}</Text>
         <View style={styles.seanceEnCours_exerciceEnCoursEtSeries}>
             <Text style={styles.seanceEnCours_exerciceEnCoursEtSeries_nomDeLexerciceEnCours}>Nom de l'exercice en cours</Text>
-            <Text style={styles.seanceEnCours_exerciceEnCoursEtSeries_nombreDeSeriesPrevues}>Nombre de séries prévues :</Text>
+            <Text style={styles.seanceEnCours_exerciceEnCoursEtSeries_nombreDeSeriesPrevues}>Séries restantes :</Text>
         </View>
 
         <Text style={styles.seanceEnCours_repetitionsAExecuter}>Répétitions à exécuter</Text>
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection : 'column',
     opacity: 1,
-    position: "relative",
+    position: 'relative',
     backgroundColor: '#07121B',
     paddingTop : 8
   },
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     borderBottomColor : 'white',
     color: 'white',
     fontSize: 20,
-    textAlign: "center",
+    textAlign: 'center',
   },
   "seanceEnCours_externalChrono": {
     opacity: 1,
@@ -94,14 +94,14 @@ const styles = StyleSheet.create({
   "seanceEnCours_repetitionsAExecuter": {
     color: 'white',
     fontSize: 20,
-    textAlign: "center",
+    textAlign: 'center',
     padding : 10,
   },
   "seanceEnCours_repAExecuter": {
     flexDirection : 'row',
     justifyContent : 'center',
     opacity: 1,
-    backgroundColor: "transparent",
+    backgroundColor: 'transparent',
   },
   "seanceEnCours_repAExecuter_ellipse236e93943": {
     opacity: 1,
@@ -118,10 +118,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   "seanceEnCours_serieTerminee": {
-    justifyContent : "center",
+    justifyContent : 'center',
     alignSelf : 'center',
     opacity: 1,
-    backgroundColor: "transparent",
+    backgroundColor: 'transparent',
     width: 209,
     height: 60,
     marginTop : 20,

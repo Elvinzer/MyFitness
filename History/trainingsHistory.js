@@ -1,10 +1,10 @@
 // Helpers/pushHistory.js
 
-export default dataPushHistory = [
+export default trainingsHistory = [
    {
       id:1,
-      original_title:"Développé décliné",
-      type:"Push",
+      exercice:"Développé décliné",
+      type_training:"Push",
       s1:"12",
       s2:"11",
       s3:"10",
@@ -12,7 +12,7 @@ export default dataPushHistory = [
       s5:"9",
       s6:"10",
       difficulty:"10",
-      last_date:"18/06/2020",
+      last_training_date:"18/06/2020",
    },
    {
       id:2,

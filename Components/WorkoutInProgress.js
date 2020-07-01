@@ -7,6 +7,7 @@ import {Path as SvgPath} from 'react-native-svg';
 import {Text as SvgText} from 'react-native-svg';
 import {Image as SvgImage} from 'react-native-svg';
 import MyTimer from './MyTimer'
+import TrainingsHistory from '../History/TrainingsHistory'
 
 const screen = Dimensions.get('window');
 
@@ -16,14 +17,19 @@ export default class SeanceEnCours extends Component {
       super(props);
       this.state = {
         setTimer : false,
+        data : [],
       };
+  }
+
+  _getHistory(){
+     this.setState({ data: trainingsHistory.results })
   }
 
   render() {
     const typeTraining = this.props.route.params.typeTraining;
+
     return (
     <View style={styles.seanceEnCours}>
-
         <Text style={styles.seanceEnCours_title}>Séance {typeTraining}</Text>
         <View style={styles.seanceEnCours_exerciceEnCoursEtSeries}>
             <Text style={styles.seanceEnCours_exerciceEnCoursEtSeries_nomDeLexerciceEnCours}>Nom de l'exercice en cours</Text>

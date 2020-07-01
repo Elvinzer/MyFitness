@@ -19,14 +19,11 @@ export default class SeanceEnCours extends Component {
       };
   }
 
-_setTimer(){
-  setTimer= true;
-    return <MyTimer></MyTimer>
-}
   render() {
     const typeTraining = this.props.route.params.typeTraining;
     return (
     <View style={styles.seanceEnCours}>
+
         <Text style={styles.seanceEnCours_title}>Séance {typeTraining}</Text>
         <View style={styles.seanceEnCours_exerciceEnCoursEtSeries}>
             <Text style={styles.seanceEnCours_exerciceEnCoursEtSeries_nomDeLexerciceEnCours}>Nom de l'exercice en cours</Text>
@@ -39,9 +36,12 @@ _setTimer(){
             <Text style={styles.seanceEnCours_repAExecuter_x12}>12</Text>
         </View>
 
-        <Text style={styles.seanceEnCours_tempsDeRecuperation}>Temps de récupération</Text>
-        <MyTimer style={styles.monTimer}>
-        </MyTimer>
+        <View style={styles.monTimer}>
+          <Text style={styles.seanceEnCours_tempsDeRecuperation}>Temps de récupération</Text>
+          <MyTimer>
+          </MyTimer>
+        </View>
+
     </View>
     );
   }
@@ -109,13 +109,13 @@ const styles = StyleSheet.create({
     height: 59,
   },
   "seanceEnCours_repAExecuter_x12": {
-    "opacity": 1,
+    opacity: 1,
     position : 'absolute',
     right : screen.width / 2.12,
     top : 13,
     color : "rgba(112, 112, 112, 1)",
-    "color": 'black',
-    "fontSize": 20,
+    color: 'black',
+    fontSize: 20,
   },
   "seanceEnCours_serieTerminee": {
     justifyContent : "center",
@@ -135,15 +135,20 @@ const styles = StyleSheet.create({
     top : 15,
   },
   "seanceEnCours_tempsDeRecuperation": {
-    "opacity": 1,
-    "backgroundColor": "rgba(255, 255, 255, 0)",
-    "color": 'white',
-    "fontSize": 20,
-    "fontWeight": "400",
-    "fontStyle": "normal",
-    "textAlign": "left",
+    opacity: 1,
+    position : 'relative',
+    bottom : 12,
+    backgroundColor: "rgba(255, 255, 255, 0)",
+    color: 'white',
+    fontSize: 20,
+    fontWeight: "400",
+    fontStyle: "normal",
+    textAlign: "left",
     textAlign : 'center',
     marginTop  : 20,
-    paddingBottom : 20,
+    paddingBottom : 5,
+  },
+  "monTimer":{
+
   }
 });

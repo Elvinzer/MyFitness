@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   },
   timerText: {
       color: '#fff',
-      fontSize: 32,
+      fontSize: 38,
       marginBottom: 20
   },
   buttonReset: {

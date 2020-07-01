@@ -29,10 +29,7 @@ class TrainingDetail extends React.Component {
       <View style={styles.main_container}>
         <Text style={styles.titre}>Détail du training {this.props.route.params.titreTrainings} : </Text>
         <Text style={styles.texteDescription}>{this.props.route.params.trainingContenu}</Text>
-        <FlatList
-          data={trainingsHistory}
-          keyExtractor={(item) => item.id.toString()}
-        />
+
         <View style={styles.boutonDebuter}>
           <Button title='Débuter la séance !' onPress={() => this._startTraining(this.props.route.params.titreTrainings)}/>
         </View>
@@ -43,12 +40,11 @@ class TrainingDetail extends React.Component {
 
 const styles = StyleSheet.create({
   main_container: {
-    flex: 0.7,
+    flex: 1,
     flexDirection : 'column',
     alignItems : 'center'
   },
   titre:{
-    flex: 0.2,
     flexDirection : 'row',
     textAlign : 'center',
     fontSize : 18,
@@ -60,6 +56,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop : 20,
     fontSize : 16,
+    marginBottom : 20,
   },
   boutonDebuter:{
     flex : 1,

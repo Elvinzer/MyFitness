@@ -7,7 +7,8 @@ import {Path as SvgPath} from 'react-native-svg';
 import {Text as SvgText} from 'react-native-svg';
 import {Image as SvgImage} from 'react-native-svg';
 import MyTimer from './MyTimer'
-import TrainingsHistory from '../History/TrainingsHistory'
+import trainingsHistory from '../History/trainingsHistory'
+
 
 const screen = Dimensions.get('window');
 
@@ -18,21 +19,32 @@ export default class SeanceEnCours extends Component {
       this.state = {
         setTimer : false,
         data : [],
+        monTrainingFinal : [],
       };
   }
 
-  _getHistory(){
-     this.setState({ data: trainingsHistory.results })
+  _getHistory(monTraining){
+     this.data = trainingsHistory;
+     for (let i = 0; i < this.data.length; i++) {
+       let monId = i + 1
+
+       if (this.data[i].type_training == monTraining){
+         console.log("Debug : " + monId)
+         console.log(this.data[i])
+         //this.monTrainingFinal.push(this.data[i].exercice);
+       }
+     }
   }
 
   render() {
     const typeTraining = this.props.route.params.typeTraining;
-
+    this._getHistory(typeTraining);
     return (
     <View style={styles.seanceEnCours}>
         <Text style={styles.seanceEnCours_title}>Séance {typeTraining}</Text>
         <View style={styles.seanceEnCours_exerciceEnCoursEtSeries}>
             <Text style={styles.seanceEnCours_exerciceEnCoursEtSeries_nomDeLexerciceEnCours}>Nom de l'exercice en cours</Text>
+
             <Text style={styles.seanceEnCours_exerciceEnCoursEtSeries_nombreDeSeriesPrevues}>Séries restantes :</Text>
         </View>
 

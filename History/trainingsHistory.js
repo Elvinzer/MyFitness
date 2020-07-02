@@ -2,9 +2,10 @@
 
 export default trainingsHistory = [
    {
-      id:1,
+      id:0,
       exercice:"Développé décliné",
       type_training:"Push",
+      nbSeries:"6",
       s1:"12",
       s2:"11",
       s3:"10",
@@ -15,9 +16,10 @@ export default trainingsHistory = [
       last_training_date:"18/06/2020",
    },
    {
-      id:2,
+      id:1,
       exercice:"Développé couché prise serrée",
       type_training:"Push",
+      nbSeries:"6",
       s1:"12",
       s2:"11",
       s3:"10",
@@ -29,9 +31,10 @@ export default trainingsHistory = [
    },
 
    {
-      id:3,
+      id:2,
       exercice:"Développé Développé couché prise large",
       type_training:"Push",
+      nbSeries:"6",
       s1:"12",
       s2:"11",
       s3:"10",
@@ -42,9 +45,24 @@ export default trainingsHistory = [
       last_training_date:"18/06/2020",
    },
    {
-      id:4,
+      id:3,
       exercice:"Tractions",
       type_training:"Pull",
+      nbSeries:"6",
+      s1:"12",
+      s2:"11",
+      s3:"10",
+      s4:"11",
+      s5:"10",
+      s6:"9",
+      difficulty:"7",
+      last_training_date:"18/06/2020",
+   },
+   {
+      id:4,
+      exercice:"butterfly",
+      type_training:"Push",
+      nbSeries:"6",
       s1:"12",
       s2:"11",
       s3:"10",

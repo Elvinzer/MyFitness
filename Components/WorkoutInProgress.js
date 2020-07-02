@@ -11,6 +11,7 @@ import trainingsHistory from '../History/trainingsHistory'
 
 
 const screen = Dimensions.get('window');
+let compteurExercices = 0
 
 export default class SeanceEnCours extends Component {
 
@@ -19,31 +20,60 @@ export default class SeanceEnCours extends Component {
       this.state = {
         setTimer : false,
         data : [],
-        monTrainingFinal : [],
+        nbrExercicesTraining : 0,
+        idsExercicesTraining : [],
       };
   }
 
+  /* Fonction permettant de récupérer tous les exos correpondants au type de training indiqué en parametre (ex : "Pull")
+   Cette meme fonction retourne un Array avec tous les exos */
   _getHistory(monTraining){
-     this.data = trainingsHistory;
-     for (let i = 0; i < this.data.length; i++) {
-       let monId = i + 1
+    console.log("_getHistory()")
+    // On récupère trainingsHistory dans un tableau
+     this.data = trainingsHistory
+     let monTrainingFinal = []
+     let nombreExerices = 0
+     let idExercice = []
 
+     // On parcourt tout le tableau
+     for (let i = 0; i < this.data.length; i++) {
+       // Si l'exercice appartient bien au type de training souhaité
        if (this.data[i].type_training == monTraining){
-         console.log("Debug : " + monId)
-         console.log(this.data[i])
-         //this.monTrainingFinal.push(this.data[i].exercice);
+         // On récupère les exercices du training
+         monTrainingFinal = monTrainingFinal.concat(this.data[i])
+
+         // On récupère le nombre d'exercices du training
+         nombreExerices += 1
+         this.nbrExercicesTraining = nombreExerices
+
+         // On récupère les ids des exercices
+         idExercice = idExercice.concat(this.data[i].id)
+         this.idsExercicesTraining = idExercice
        }
      }
+     return monTrainingFinal
+  }
+
+  _startTraining(typeTraining){
+      console.log("_startTraining() jozey")
+      // On récupère tout ce qu'il y a savoir dans le carnet dentrainement
+      const mesExos = this._getHistory(typeTraining)
+
+      //console.log("nombre d'id : " + this.idsExercicesTraining[3])
+      //console.log("nombre d'exo : " + this.nbrExercicesTraining)
+
+      return this.data[this.idsExercicesTraining[compteurExercices]].exercice
+      compteurExercices += 1
   }
 
   render() {
     const typeTraining = this.props.route.params.typeTraining;
-    this._getHistory(typeTraining);
+    //this._startTraining(typeTraining);
     return (
     <View style={styles.seanceEnCours}>
         <Text style={styles.seanceEnCours_title}>Séance {typeTraining}</Text>
         <View style={styles.seanceEnCours_exerciceEnCoursEtSeries}>
-            <Text style={styles.seanceEnCours_exerciceEnCoursEtSeries_nomDeLexerciceEnCours}>Nom de l'exercice en cours</Text>
+            <Text style={styles.seanceEnCours_exerciceEnCoursEtSeries_nomDeLexerciceEnCours}>{this._startTraining(typeTraining)}</Text>
 
             <Text style={styles.seanceEnCours_exerciceEnCoursEtSeries_nombreDeSeriesPrevues}>Séries restantes :</Text>
         </View>

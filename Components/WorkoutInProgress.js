@@ -13,6 +13,7 @@ import trainingsHistory from '../History/trainingsHistory'
 const screen = Dimensions.get('window');
 let compteurExercices = 0
 let compteurSerie = 1
+let nombreSerie = 0
 
 export default class SeanceEnCours extends Component {
 
@@ -24,7 +25,7 @@ export default class SeanceEnCours extends Component {
       nbrExercicesTraining: 0,
       idsExercicesTraining: [],
       nbrRepetitionsExercice: 0,
-      nbrSeriesExercice: 0,
+      nbrSeriesExercice : 0,
       monTrainingFinal: [],
     };
   }
@@ -55,6 +56,8 @@ export default class SeanceEnCours extends Component {
     }
     this.monTrainingFinal = monTrainingFinal
     this.nbrExercicesTraining = nombreExerices
+    this.nbrSeriesExercice = this._getNbSeries(monTraining)
+    nombreSerie = this.nbrSeriesExercice
 
     return monTrainingFinal
   }
@@ -79,6 +82,7 @@ export default class SeanceEnCours extends Component {
     // On récupère le nombre de séries de l'exercice à effectuer
     const nbSeries = this.monTrainingHistory[this.idsExercicesTraining[compteurExercices]].nbSeries
     this.nbrSeriesExercice = nbSeries
+    console.log("NbSeries : " + this.nbrSeriesExercice)
     return nbSeries
   }
 
@@ -101,8 +105,11 @@ export default class SeanceEnCours extends Component {
     compteurExercices += 1
   }
 
-  nextSerie() {
+  _nextSerie() {
     console.log("_nextSerie")
+    console.log("Avant next : " + nombreSerie)
+    nombreSerie -= 1
+    console.log("Après next : " + nombreSerie)
   };
 
 
@@ -115,7 +122,7 @@ export default class SeanceEnCours extends Component {
         <View style={styles.seanceEnCours_exerciceEnCoursEtSeries}>
           <Text style={styles.seanceEnCours_exerciceEnCoursEtSeries_nomDeLexerciceEnCours}>{this._getSeance(typeTraining)}</Text>
 
-          <Text style={styles.seanceEnCours_exerciceEnCoursEtSeries_nombreDeSeriesPrevues}>Séries prévues : {this._getNbSeries(typeTraining)}</Text>
+          <Text style={styles.seanceEnCours_exerciceEnCoursEtSeries_nombreDeSeriesPrevues}>Séries prévues : {this._getNbSeries()}</Text>
         </View>
         <Text style={styles.seanceEnCours_numeroSerie}>Série {compteurSerie}</Text>
         <Text style={styles.seanceEnCours_repetitionsAExecuter}>Répétitions à exécuter</Text>
@@ -126,7 +133,7 @@ export default class SeanceEnCours extends Component {
 
         <View style={styles.monTimer}>
           <Text style={styles.seanceEnCours_tempsDeRecuperation}>Temps de récupération</Text>
-          <MyTimer nextSerie={this.nextSerie}>
+          <MyTimer nextSerie={this._nextSerie}>
 
           </MyTimer>
         </View>

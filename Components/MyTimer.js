@@ -14,20 +14,13 @@ const getRemaining = (time) => {
     return { mins: formatNumber(mins), secs: formatNumber(secs) };
 }
 
-export default function MyTimer() {
-  const nextSerie = this.props;
+export default MyTimer = props => {
   // On definie ici le temps du compte à rebours en seconde
   const howLong = 30;
 
   const [remainingSecs, setRemainingSecs] = useState(howLong);
   const [isActive, setIsActive] = useState(false);
   const { mins, secs } = getRemaining(remainingSecs);
-
-  const Child = props =>{
-    return <button onClick={props.nextSerie}/>
-  }
-
-  //const workout = this.props;
 
   // On bascule le chrono comme inactif
   toggle = () => {
@@ -37,7 +30,7 @@ export default function MyTimer() {
   reset = () => {
     setRemainingSecs(howLong);
     setIsActive(false);
-    props.nextSerie
+    props.nextSerie();
   }
 
   useEffect(() => {

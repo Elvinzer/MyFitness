@@ -1,11 +1,11 @@
-import React, {Component, useState, useEffect} from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import PropTypes from "prop-types";
-import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight, TouchableOpacity} from 'react-native';
-import {Image as ReactImage, Dimensions} from 'react-native';
-import Svg, {Defs, Pattern} from 'react-native-svg';
-import {Path as SvgPath} from 'react-native-svg';
-import {Text as SvgText} from 'react-native-svg';
-import {Image as SvgImage} from 'react-native-svg';
+import { StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight, TouchableOpacity } from 'react-native';
+import { Image as ReactImage, Dimensions } from 'react-native';
+import Svg, { Defs, Pattern } from 'react-native-svg';
+import { Path as SvgPath } from 'react-native-svg';
+import { Text as SvgText } from 'react-native-svg';
+import { Image as SvgImage } from 'react-native-svg';
 import MyTimer from './MyTimer'
 import trainingsHistory from '../History/trainingsHistory'
 
@@ -17,61 +17,61 @@ let compteurSerie = 1
 export default class SeanceEnCours extends Component {
 
   constructor(props) {
-      super(props);
-      this.state = {
-        setTimer : false,
-        monTrainingHistory : [],
-        nbrExercicesTraining : 0,
-        idsExercicesTraining : [],
-        nbrRepetitionsExercice : 0,
-        nbrSeriesExercice : 0,
-        monTrainingFinal : [],
-      };
+    super(props);
+    this.state = {
+      setTimer: false,
+      monTrainingHistory: [],
+      nbrExercicesTraining: 0,
+      idsExercicesTraining: [],
+      nbrRepetitionsExercice: 0,
+      nbrSeriesExercice: 0,
+      monTrainingFinal: [],
+    };
   }
 
   /* Fonction permettant de récupérer tous les exos correpondants au type de training indiqué en parametre (ex : "Pull")
    Cette meme fonction retourne un Array avec tous les exos */
-  _getHistory(monTraining){
+  _getHistory(monTraining) {
     console.log("_getHistory()")
     // On récupère trainingsHistory dans un tableau
-     this.monTrainingHistory = trainingsHistory
-     let monTrainingFinal = []
-     let nombreExerices = 0
-     let idExercice = []
+    this.monTrainingHistory = trainingsHistory
+    let monTrainingFinal = []
+    let nombreExerices = 0
+    let idExercice = []
 
-     // On parcourt tout le tableau
-     for (let i = 0; i < this.monTrainingHistory.length; i++) {
-       // Si l'exercice appartient bien au type de training souhaité
-       if (this.monTrainingHistory[i].type_training == monTraining){
-         // On récupère les exercices du training
-         monTrainingFinal = monTrainingFinal.concat(this.monTrainingHistory[i])
+    // On parcourt tout le tableau
+    for (let i = 0; i < this.monTrainingHistory.length; i++) {
+      // Si l'exercice appartient bien au type de training souhaité
+      if (this.monTrainingHistory[i].type_training == monTraining) {
+        // On récupère les exercices du training
+        monTrainingFinal = monTrainingFinal.concat(this.monTrainingHistory[i])
 
-         // On récupère le nombre d'exercices du training
-         nombreExerices += 1
-         // On récupère les ids des exercices
-         idExercice = idExercice.concat(this.monTrainingHistory[i].id)
-         this.idsExercicesTraining = idExercice
-       }
-     }
-     this.monTrainingFinal = monTrainingFinal
-     this.nbrExercicesTraining = nombreExerices
+        // On récupère le nombre d'exercices du training
+        nombreExerices += 1
+        // On récupère les ids des exercices
+        idExercice = idExercice.concat(this.monTrainingHistory[i].id)
+        this.idsExercicesTraining = idExercice
+      }
+    }
+    this.monTrainingFinal = monTrainingFinal
+    this.nbrExercicesTraining = nombreExerices
 
-     return monTrainingFinal
+    return monTrainingFinal
   }
 
-//Fonction permettant de récupérer le nom de l'exerice à effectuer
-  _getSeance(typeTraining){
-      console.log("_getSeance()")
-      // On récupère tout ce qu'il y a savoir dans le carnet dentrainement
-      const mesExos = this._getHistory(typeTraining)
+  //Fonction permettant de récupérer le nom de l'exerice à effectuer
+  _getSeance(typeTraining) {
+    console.log("_getSeance()")
+    // On récupère tout ce qu'il y a savoir dans le carnet dentrainement
+    const mesExos = this._getHistory(typeTraining)
 
-      // On récupère le nom de l'exercice à effectuer
-      const monExo = this.monTrainingHistory[this.idsExercicesTraining[compteurExercices]].exercice
-      return monExo
+    // On récupère le nom de l'exercice à effectuer
+    const monExo = this.monTrainingHistory[this.idsExercicesTraining[compteurExercices]].exercice
+    return monExo
   }
 
   //Fonction permettant de récupérer le nombre de série d'un exercice
-  _getNbSeries(typeTraining){
+  _getNbSeries(typeTraining) {
     console.log("_getNbSeries()")
     // On récupère tout ce qu'il y a savoir dans le carnet dentrainement
     const mesExos = this.monTrainingFinal
@@ -83,7 +83,7 @@ export default class SeanceEnCours extends Component {
   }
 
   //Fonction permettant de récupérer le nombre de série d'un exercice
-  _getNbRepetitions(typeTraining){
+  _getNbRepetitions(typeTraining) {
     console.log("_getNbRepetitions()")
     // On récupère tout ce qu'il y a savoir dans le carnet dentrainement
     const mesExos = this.monTrainingFinal
@@ -97,49 +97,41 @@ export default class SeanceEnCours extends Component {
   }
 
   // Fonction permettant d'incrémenter pour passer au prochain exo
-  _nextExercice(){
+  _nextExercice() {
     compteurExercices += 1
   }
 
+  nextSerie() {
+    console.log("_nextSerie")
+  };
 
 
   render() {
     const typeTraining = this.props.route.params.typeTraining;
 
-    // Fonction permettant d'incrémenter pour passer à la série suivante
-    const Parent = props => {
-      const nextSerie = () => {
-        console.log("_nextSerie")
-      };
-      return <Timer click = {nextSerie}/>
-      //compteurSerie +=1
-      //console.log("Avant next : " + this.nbrSeriesExercice)
-      //this.nbrSeriesExercice -=1
-      //console.log("Après next : " + this.nbrSeriesExercice)
-    }
     return (
-    <View style={styles.seanceEnCours}>
-        <Text style={styles.seanceEnCours_title}>Séance { typeTraining }</Text>
+      <View style={styles.seanceEnCours} >
+        <Text style={styles.seanceEnCours_title}>Séance {typeTraining}</Text>
         <View style={styles.seanceEnCours_exerciceEnCoursEtSeries}>
-            <Text style={styles.seanceEnCours_exerciceEnCoursEtSeries_nomDeLexerciceEnCours}>{ this._getSeance(typeTraining) }</Text>
+          <Text style={styles.seanceEnCours_exerciceEnCoursEtSeries_nomDeLexerciceEnCours}>{this._getSeance(typeTraining)}</Text>
 
-            <Text style={styles.seanceEnCours_exerciceEnCoursEtSeries_nombreDeSeriesPrevues}>Séries prévues : { this._getNbSeries(typeTraining) }</Text>
+          <Text style={styles.seanceEnCours_exerciceEnCoursEtSeries_nombreDeSeriesPrevues}>Séries prévues : {this._getNbSeries(typeTraining)}</Text>
         </View>
-        <Text style={styles.seanceEnCours_numeroSerie}>Série { compteurSerie }</Text>
+        <Text style={styles.seanceEnCours_numeroSerie}>Série {compteurSerie}</Text>
         <Text style={styles.seanceEnCours_repetitionsAExecuter}>Répétitions à exécuter</Text>
         <View style={styles.seanceEnCours_repAExecuter}>
-            <Svg style={styles.seanceEnCours_repAExecuter_ellipse236e93943}  fill="rgba(187, 223, 255, 1)"><SvgPath d="M 29.5 0 C 45.79239654541016 0 59 13.20760154724121 59 29.5 C 59 45.79239654541016 45.79239654541016 59 29.5 59 C 13.20760154724121 59 0 45.79239654541016 0 29.5 C 0 13.20760154724121 13.20760154724121 0 29.5 0 Z"  /></Svg>
-            <Text style={styles.seanceEnCours_repAExecuter_x12}>{ this._getNbRepetitions(typeTraining) }</Text>
+          <Svg style={styles.seanceEnCours_repAExecuter_ellipse236e93943} fill="rgba(187, 223, 255, 1)"><SvgPath d="M 29.5 0 C 45.79239654541016 0 59 13.20760154724121 59 29.5 C 59 45.79239654541016 45.79239654541016 59 29.5 59 C 13.20760154724121 59 0 45.79239654541016 0 29.5 C 0 13.20760154724121 13.20760154724121 0 29.5 0 Z" /></Svg>
+          <Text style={styles.seanceEnCours_repAExecuter_x12}>{this._getNbRepetitions(typeTraining)}</Text>
         </View>
 
         <View style={styles.monTimer}>
           <Text style={styles.seanceEnCours_tempsDeRecuperation}>Temps de récupération</Text>
-          <MyTimer>
+          <MyTimer nextSerie={this.nextSerie}>
 
           </MyTimer>
         </View>
 
-    </View>
+      </View>
     );
   }
 }
@@ -147,15 +139,15 @@ export default class SeanceEnCours extends Component {
 const styles = StyleSheet.create({
   "seanceEnCours": {
     flex: 1,
-    flexDirection : 'column',
+    flexDirection: 'column',
     opacity: 1,
     position: 'relative',
     backgroundColor: '#07121B',
-    paddingTop : 8
+    paddingTop: 8
   },
   "seanceEnCours_title": {
-    borderBottomWidth : 1,
-    borderBottomColor : 'white',
+    borderBottomWidth: 1,
+    borderBottomColor: 'white',
     color: 'white',
     fontSize: 20,
     textAlign: 'center',
@@ -169,16 +161,16 @@ const styles = StyleSheet.create({
   },
   "seanceEnCours_numeroSerie": {
     position: 'relative',
-    top : 6,
+    top: 6,
     fontSize: 20,
     textAlign: 'center',
-    padding : 0,
+    padding: 0,
     color: 'white',
   },
   "seanceEnCours_exerciceEnCoursEtSeries": {
-    justifyContent : 'space-around',
-    alignItems : 'center',
-    textAlign : 'center',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    textAlign: 'center',
     opacity: 1,
     backgroundColor: 'transparent',
   },
@@ -201,11 +193,11 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 20,
     textAlign: 'center',
-    padding : 10,
+    padding: 10,
   },
   "seanceEnCours_repAExecuter": {
-    flexDirection : 'row',
-    justifyContent : 'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
     opacity: 1,
     backgroundColor: 'transparent',
   },
@@ -216,42 +208,42 @@ const styles = StyleSheet.create({
   },
   "seanceEnCours_repAExecuter_x12": {
     opacity: 1,
-    position : 'absolute',
-    right : screen.width / 2.12,
-    top : 13,
-    color : "rgba(112, 112, 112, 1)",
+    position: 'absolute',
+    right: screen.width / 2.12,
+    top: 13,
+    color: "rgba(112, 112, 112, 1)",
     color: 'black',
     fontSize: 20,
   },
   "seanceEnCours_serieTerminee": {
-    justifyContent : 'center',
-    alignSelf : 'center',
+    justifyContent: 'center',
+    alignSelf: 'center',
     opacity: 1,
     backgroundColor: 'transparent',
     width: 209,
     height: 60,
-    marginTop : 20,
-    borderBottomWidth : 1,
-    borderBottomColor : 'white',
+    marginTop: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: 'white',
   },
   "seanceEnCours_chrono": {
-    position : 'relative',
-    color : 'white',
-    textAlign : 'center',
-    top : 15,
+    position: 'relative',
+    color: 'white',
+    textAlign: 'center',
+    top: 15,
   },
   "seanceEnCours_tempsDeRecuperation": {
     opacity: 1,
-    position : 'relative',
-    bottom : 12,
+    position: 'relative',
+    bottom: 12,
     backgroundColor: "rgba(255, 255, 255, 0)",
     color: 'white',
     fontSize: 20,
     fontWeight: "400",
     fontStyle: "normal",
     textAlign: "left",
-    textAlign : 'center',
-    marginTop  : 20,
-    paddingBottom : 5,
+    textAlign: 'center',
+    marginTop: 20,
+    paddingBottom: 5,
   }
 });

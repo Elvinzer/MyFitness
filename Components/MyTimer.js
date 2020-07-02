@@ -4,6 +4,8 @@ import SoundPlayer from 'react-native-sound-player'
 
 const screen = Dimensions.get('window');
 
+const nextSerie = this.props;
+
 const formatNumber = number => `0${number}`.slice(-2);
 
 const getRemaining = (time) => {

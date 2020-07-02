@@ -99,6 +99,12 @@ export default class SeanceEnCours extends Component {
     compteurExercices += 1
   }
 
+  // Fonction permettant d'incrémenter pour passer à la série suivante
+  _nextSerie(){
+    console.log("_nextSerie")
+    compteurSerie +=1
+  }
+
   render() {
     const typeTraining = this.props.route.params.typeTraining;
 
@@ -119,7 +125,7 @@ export default class SeanceEnCours extends Component {
 
         <View style={styles.monTimer}>
           <Text style={styles.seanceEnCours_tempsDeRecuperation}>Temps de récupération</Text>
-          <MyTimer>
+          <MyTimer nextSerie = {this._nextSerie}>
 
           </MyTimer>
         </View>

@@ -101,18 +101,22 @@ export default class SeanceEnCours extends Component {
     compteurExercices += 1
   }
 
-  // Fonction permettant d'incrémenter pour passer à la série suivante
-  _nextSerie(){
-    console.log("_nextSerie")
-    compteurSerie +=1
-    console.log("Avant next : " + this.nbrSeriesExercice)
-    this.nbrSeriesExercice -=1
-    console.log("Après next : " + this.nbrSeriesExercice)
-  }
+
 
   render() {
     const typeTraining = this.props.route.params.typeTraining;
 
+    // Fonction permettant d'incrémenter pour passer à la série suivante
+    const Parent = props => {
+      const nextSerie = () => {
+        console.log("_nextSerie")
+      };
+      return <Timer click = {nextSerie}/>
+      //compteurSerie +=1
+      //console.log("Avant next : " + this.nbrSeriesExercice)
+      //this.nbrSeriesExercice -=1
+      //console.log("Après next : " + this.nbrSeriesExercice)
+    }
     return (
     <View style={styles.seanceEnCours}>
         <Text style={styles.seanceEnCours_title}>Séance { typeTraining }</Text>
@@ -124,13 +128,13 @@ export default class SeanceEnCours extends Component {
         <Text style={styles.seanceEnCours_numeroSerie}>Série { compteurSerie }</Text>
         <Text style={styles.seanceEnCours_repetitionsAExecuter}>Répétitions à exécuter</Text>
         <View style={styles.seanceEnCours_repAExecuter}>
-            <Svg style={styles.seanceEnCours_repAExecuter_ellipse236e93943} preserveAspectRatio="none" viewBox="-0.75 -0.75 60.5 60.5" fill="rgba(187, 223, 255, 1)"><SvgPath d="M 29.5 0 C 45.79239654541016 0 59 13.20760154724121 59 29.5 C 59 45.79239654541016 45.79239654541016 59 29.5 59 C 13.20760154724121 59 0 45.79239654541016 0 29.5 C 0 13.20760154724121 13.20760154724121 0 29.5 0 Z"  /></Svg>
+            <Svg style={styles.seanceEnCours_repAExecuter_ellipse236e93943}  fill="rgba(187, 223, 255, 1)"><SvgPath d="M 29.5 0 C 45.79239654541016 0 59 13.20760154724121 59 29.5 C 59 45.79239654541016 45.79239654541016 59 29.5 59 C 13.20760154724121 59 0 45.79239654541016 0 29.5 C 0 13.20760154724121 13.20760154724121 0 29.5 0 Z"  /></Svg>
             <Text style={styles.seanceEnCours_repAExecuter_x12}>{ this._getNbRepetitions(typeTraining) }</Text>
         </View>
 
         <View style={styles.monTimer}>
           <Text style={styles.seanceEnCours_tempsDeRecuperation}>Temps de récupération</Text>
-          <MyTimer nextSerie = {this._nextSerie}>
+          <MyTimer>
 
           </MyTimer>
         </View>

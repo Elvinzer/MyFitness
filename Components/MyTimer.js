@@ -23,6 +23,10 @@ export default function MyTimer() {
   const [isActive, setIsActive] = useState(false);
   const { mins, secs } = getRemaining(remainingSecs);
 
+  const Child = props =>{
+    return <button onClick={props.nextSerie}/>
+  }
+
   //const workout = this.props;
 
   // On bascule le chrono comme inactif
@@ -33,6 +37,7 @@ export default function MyTimer() {
   reset = () => {
     setRemainingSecs(howLong);
     setIsActive(false);
+    props.nextSerie
   }
 
   useEffect(() => {

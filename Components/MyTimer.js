@@ -20,6 +20,8 @@ export default function MyTimer() {
   const [isActive, setIsActive] = useState(false);
   const { mins, secs } = getRemaining(remainingSecs);
 
+  //const workout = this.props;
+
   // On bascule le chrono comme inactif
   toggle = () => {
     setIsActive(!isActive);

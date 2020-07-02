@@ -20,11 +20,12 @@ export default class SeanceEnCours extends Component {
       super(props);
       this.state = {
         setTimer : false,
-        data : [],
+        monTrainingHistory : [],
         nbrExercicesTraining : 0,
         idsExercicesTraining : [],
-        nbrRepetitionsExercice : [],
-        myHistory : [],
+        nbrRepetitionsExercice : 0,
+        nbrSeriesExercice : 0,
+        monTrainingFinal : [],
       };
   }
 
@@ -33,26 +34,26 @@ export default class SeanceEnCours extends Component {
   _getHistory(monTraining){
     console.log("_getHistory()")
     // On récupère trainingsHistory dans un tableau
-     this.data = trainingsHistory
+     this.monTrainingHistory = trainingsHistory
      let monTrainingFinal = []
      let nombreExerices = 0
      let idExercice = []
 
      // On parcourt tout le tableau
-     for (let i = 0; i < this.data.length; i++) {
+     for (let i = 0; i < this.monTrainingHistory.length; i++) {
        // Si l'exercice appartient bien au type de training souhaité
-       if (this.data[i].type_training == monTraining){
+       if (this.monTrainingHistory[i].type_training == monTraining){
          // On récupère les exercices du training
-         monTrainingFinal = monTrainingFinal.concat(this.data[i])
+         monTrainingFinal = monTrainingFinal.concat(this.monTrainingHistory[i])
 
          // On récupère le nombre d'exercices du training
          nombreExerices += 1
          // On récupère les ids des exercices
-         idExercice = idExercice.concat(this.data[i].id)
+         idExercice = idExercice.concat(this.monTrainingHistory[i].id)
          this.idsExercicesTraining = idExercice
        }
      }
-     this.myHistory = monTrainingFinal
+     this.monTrainingFinal = monTrainingFinal
      this.nbrExercicesTraining = nombreExerices
 
      return monTrainingFinal
@@ -65,7 +66,7 @@ export default class SeanceEnCours extends Component {
       const mesExos = this._getHistory(typeTraining)
 
       // On récupère le nom de l'exercice à effectuer
-      const monExo = this.data[this.idsExercicesTraining[compteurExercices]].exercice
+      const monExo = this.monTrainingHistory[this.idsExercicesTraining[compteurExercices]].exercice
       return monExo
   }
 
@@ -73,10 +74,11 @@ export default class SeanceEnCours extends Component {
   _getNbSeries(typeTraining){
     console.log("_getNbSeries()")
     // On récupère tout ce qu'il y a savoir dans le carnet dentrainement
-    const mesExos = this.myHistory
+    const mesExos = this.monTrainingFinal
 
     // On récupère le nombre de séries de l'exercice à effectuer
-    const nbSeries = this.data[this.idsExercicesTraining[compteurExercices]].nbSeries
+    const nbSeries = this.monTrainingHistory[this.idsExercicesTraining[compteurExercices]].nbSeries
+    this.nbrSeriesExercice = nbSeries
     return nbSeries
   }
 
@@ -84,13 +86,13 @@ export default class SeanceEnCours extends Component {
   _getNbRepetitions(typeTraining){
     console.log("_getNbRepetitions()")
     // On récupère tout ce qu'il y a savoir dans le carnet dentrainement
-    const mesExos = this.myHistory
+    const mesExos = this.monTrainingFinal
     this.nbrRepetitionsExercice = 0
     let prefixeSerie = 'serie'
     let nomSerieConcatenee = (prefixeSerie + compteurSerie).toString()
 
     // On récupère le nombre de répétitions sur le numéro de serie donnée de l'exercice à effectuer
-    this.nbrRepetitionsExercice = this.data[this.idsExercicesTraining[compteurExercices]][nomSerieConcatenee]
+    this.nbrRepetitionsExercice = this.monTrainingHistory[this.idsExercicesTraining[compteurExercices]][nomSerieConcatenee]
     return this.nbrRepetitionsExercice
   }
 
@@ -103,6 +105,9 @@ export default class SeanceEnCours extends Component {
   _nextSerie(){
     console.log("_nextSerie")
     compteurSerie +=1
+    console.log("Avant next : " + this.nbrSeriesExercice)
+    this.nbrSeriesExercice -=1
+    console.log("Après next : " + this.nbrSeriesExercice)
   }
 
   render() {

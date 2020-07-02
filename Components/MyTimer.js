@@ -4,7 +4,7 @@ import SoundPlayer from 'react-native-sound-player'
 
 const screen = Dimensions.get('window');
 
-const nextSerie = this.props;
+
 
 const formatNumber = number => `0${number}`.slice(-2);
 
@@ -15,6 +15,7 @@ const getRemaining = (time) => {
 }
 
 export default function MyTimer() {
+  const nextSerie = this.props;
   // On definie ici le temps du compte à rebours en seconde
   const howLong = 30;
 

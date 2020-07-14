@@ -31,7 +31,7 @@ export default trainingsHistory = [
 
    {
       id:2,
-      exercice:"Développé Développé couché prise large",
+      exercice:"Développé couché prise large",
       type_training:"Push",
       nbSeries:"4",
       serie1:"12",

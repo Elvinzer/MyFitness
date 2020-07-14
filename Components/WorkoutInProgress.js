@@ -1,6 +1,6 @@
 import React, { Component, useState, useEffect } from 'react';
 import PropTypes from "prop-types";
-import { StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight, TouchableOpacity } from 'react-native';
+import { StyleSheet, Button , Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight, TouchableOpacity } from 'react-native';
 import { Image as ReactImage, Dimensions } from 'react-native';
 import Svg, { Defs, Pattern } from 'react-native-svg';
 import { Path as SvgPath } from 'react-native-svg';
@@ -19,6 +19,7 @@ export default class SeanceEnCours extends Component {
 
   constructor(props) {
     super(props);
+    this._nextSerie = this._nextSerie.bind(this)
     this.state = {
       setTimer: false,
       monTrainingHistory: [],
@@ -27,7 +28,11 @@ export default class SeanceEnCours extends Component {
       nbrRepetitionsExercice: 0,
       nbrSeriesExercice : 0,
       monTrainingFinal: [],
+      nbrSerieRestante : 0,
+      compteurSeriee : 1,
+      compteurExercices : 1,
     };
+
   }
 
   /* Fonction permettant de récupérer tous les exos correpondants au type de training indiqué en parametre (ex : "Pull")
@@ -59,6 +64,7 @@ export default class SeanceEnCours extends Component {
     this.nbrSeriesExercice = this._getNbSeries(monTraining)
     nombreSerie = this.nbrSeriesExercice
 
+
     return monTrainingFinal
   }
 
@@ -69,16 +75,17 @@ export default class SeanceEnCours extends Component {
     const mesExos = this._getHistory(typeTraining)
 
     // On récupère le nom de l'exercice à effectuer
+    console.log("Compteur exo : " + compteurExercices)
+
     const monExo = this.monTrainingHistory[this.idsExercicesTraining[compteurExercices]].exercice
     return monExo
   }
 
   //Fonction permettant de récupérer le nombre de série d'un exercice
-  _getNbSeries(typeTraining) {
+  _getNbSeries() {
     console.log("_getNbSeries()")
     // On récupère tout ce qu'il y a savoir dans le carnet dentrainement
     const mesExos = this.monTrainingFinal
-
     // On récupère le nombre de séries de l'exercice à effectuer
     const nbSeries = this.monTrainingHistory[this.idsExercicesTraining[compteurExercices]].nbSeries
     this.nbrSeriesExercice = nbSeries
@@ -87,7 +94,7 @@ export default class SeanceEnCours extends Component {
   }
 
   //Fonction permettant de récupérer le nombre de série d'un exercice
-  _getNbRepetitions(typeTraining) {
+  _getNbRepetitions() {
     console.log("_getNbRepetitions()")
     // On récupère tout ce qu'il y a savoir dans le carnet dentrainement
     const mesExos = this.monTrainingFinal
@@ -97,6 +104,7 @@ export default class SeanceEnCours extends Component {
 
     // On récupère le nombre de répétitions sur le numéro de serie donnée de l'exercice à effectuer
     this.nbrRepetitionsExercice = this.monTrainingHistory[this.idsExercicesTraining[compteurExercices]][nomSerieConcatenee]
+    console.log("----------------------- END ----------------------------")
     return this.nbrRepetitionsExercice
   }
 
@@ -106,25 +114,45 @@ export default class SeanceEnCours extends Component {
   }
 
   _nextSerie() {
-    console.log("_nextSerie")
-    console.log("Avant next : " + nombreSerie)
-    nombreSerie -= 1
-    console.log("Après next : " + nombreSerie)
+    var newSerie = parseInt(this.state.compteurSeriee,10) + 1
+    this.setState({
+              compteurSeriee: newSerie
+        });
+    if (this.state.compteurSeriee == this.nbrSeriesExercice){
+      this._nextExercice()
+      this.setState({
+                compteurSeriee: 1
+      });
+    }
   };
+
+  _getNbSeriesDone(){
+    console.log("_getNbSeriesDone")
+
+    const monNbSerie = this.state.compteurSeriee
+    return monNbSerie
+  }
+
+  setVariable(maVariableToSet, value){
+    this.setState({
+              maVariableToSet: value
+        });
+  }
 
 
   render() {
     const typeTraining = this.props.route.params.typeTraining;
 
     return (
-      <View style={styles.seanceEnCours} >
+
+      <View style={styles.seanceEnCours}>
         <Text style={styles.seanceEnCours_title}>Séance {typeTraining}</Text>
         <View style={styles.seanceEnCours_exerciceEnCoursEtSeries}>
           <Text style={styles.seanceEnCours_exerciceEnCoursEtSeries_nomDeLexerciceEnCours}>{this._getSeance(typeTraining)}</Text>
 
           <Text style={styles.seanceEnCours_exerciceEnCoursEtSeries_nombreDeSeriesPrevues}>Séries prévues : {this._getNbSeries()}</Text>
         </View>
-        <Text style={styles.seanceEnCours_numeroSerie}>Série {compteurSerie}</Text>
+        <Text style={styles.seanceEnCours_numeroSerie}>Série {this._getNbSeriesDone()}</Text>
         <Text style={styles.seanceEnCours_repetitionsAExecuter}>Répétitions à exécuter</Text>
         <View style={styles.seanceEnCours_repAExecuter}>
           <Svg style={styles.seanceEnCours_repAExecuter_ellipse236e93943} fill="rgba(187, 223, 255, 1)"><SvgPath d="M 29.5 0 C 45.79239654541016 0 59 13.20760154724121 59 29.5 C 59 45.79239654541016 45.79239654541016 59 29.5 59 C 13.20760154724121 59 0 45.79239654541016 0 29.5 C 0 13.20760154724121 13.20760154724121 0 29.5 0 Z" /></Svg>
@@ -132,6 +160,7 @@ export default class SeanceEnCours extends Component {
         </View>
 
         <View style={styles.monTimer}>
+
           <Text style={styles.seanceEnCours_tempsDeRecuperation}>Temps de récupération</Text>
           <MyTimer nextSerie={this._nextSerie}>
 

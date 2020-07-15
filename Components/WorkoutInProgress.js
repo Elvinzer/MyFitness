@@ -62,6 +62,7 @@ export default class SeanceEnCours extends Component {
     }
     this.monTrainingFinal = monTrainingFinal
     this.nbrExercicesTraining = nombreExerices
+    console.log("nb exo : " + this.nbrExercicesTraining)
     this.nbrSeriesExercice = this._getNbSeries(monTraining)
     nombreSerie = this.nbrSeriesExercice
 
@@ -141,12 +142,6 @@ export default class SeanceEnCours extends Component {
 
     const monNbSerie = this.state.compteurSeriee
     return monNbSerie
-  }
-
-  setVariable(maVariableToSet, value){
-    this.setState({
-              maVariableToSet: value
-        });
   }
 
 

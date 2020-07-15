@@ -21,6 +21,7 @@ export default MyTimer = props => {
   const [remainingSecs, setRemainingSecs] = useState(howLong);
   const [isActive, setIsActive] = useState(false);
   const { mins, secs } = getRemaining(remainingSecs);
+  var timerFinished = 0;
 
   // On bascule le chrono comme inactif
   toggle = () => {
@@ -30,7 +31,6 @@ export default MyTimer = props => {
   reset = () => {
     setRemainingSecs(howLong);
     setIsActive(false);
-    props.nextSerie();
   }
 
   useEffect(() => {
@@ -39,6 +39,11 @@ export default MyTimer = props => {
     if(remainingSecs == 0){
       clearInterval(interval);
       setIsActive(false);
+    }
+    // Une fois le chrono terminé, on passe à la prochaine serie
+    if(remainingSecs == 0 && !isActive){
+      props.nextSerie();
+      this.reset();
     }
     // Si nous ne sommes pas encore à 0, on décrémente le chrono
     if (isActive) {

@@ -68,6 +68,20 @@ export default trainingsHistory = [
       serie6:"9",
       difficulty:"7",
       last_training_date:"18/06/2020",
-   }
+   },
+   {
+      id:5,
+      exercice:"Tractions large",
+      type_training:"Pull",
+      nbSeries:"6",
+      serie1:"12",
+      serie2:"11",
+      serie3:"10",
+      serie4:"11",
+      serie5:"10",
+      serie6:"9",
+      difficulty:"7",
+      last_training_date:"18/06/2020",
+   },
 
 ]

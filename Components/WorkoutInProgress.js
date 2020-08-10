@@ -62,7 +62,6 @@ export default class SeanceEnCours extends Component {
     }
     this.monTrainingFinal = monTrainingFinal
     this.nbrExercicesTraining = nombreExerices
-    console.log("nb exo : " + this.nbrExercicesTraining)
     this.nbrSeriesExercice = this._getNbSeries(monTraining)
     nombreSerie = this.nbrSeriesExercice
 
@@ -76,9 +75,7 @@ export default class SeanceEnCours extends Component {
     // On récupère tout ce qu'il y a savoir dans le carnet dentrainement
     const mesExos = this._getHistory(typeTraining)
 
-    // On récupère le nom de l'exercice à effectuer
-    console.log("Compteur exo : " + compteurExercices)
-
+    // On verifie qu'on ne dépasse pas le nombre total d'exerice de la séance
     if(compteurExercices < this.nbrExercicesTraining){
       const monExo = this.monTrainingHistory[this.idsExercicesTraining[compteurExercices]].exercice
       return monExo
@@ -91,8 +88,11 @@ export default class SeanceEnCours extends Component {
     console.log("_getNbSeries()")
     // On récupère tout ce qu'il y a savoir dans le carnet dentrainement
     const mesExos = this.monTrainingFinal
-    // On récupère le nombre de séries de l'exercice à effectuer
+
+
+    // On verifie qu'on ne dépasse pas le nombre total d'exerice de la séance
     if(compteurExercices < this.nbrExercicesTraining){
+      // On récupère le nombre de séries de l'exercice à effectuer
       const nbSeries = this.monTrainingHistory[this.idsExercicesTraining[compteurExercices]].nbSeries
       this.nbrSeriesExercice = nbSeries
       return nbSeries
@@ -109,8 +109,10 @@ export default class SeanceEnCours extends Component {
     let prefixeSerie = 'serie'
     let nomSerieConcatenee = (prefixeSerie + compteurSerie).toString()
 
-    // On récupère le nombre de répétitions sur le numéro de serie donnée de l'exercice à effectuer
+
+    // On verifie qu'on ne dépasse pas le nombre total d'exerice de la séance
     if(compteurExercices < this.nbrExercicesTraining){
+      // On récupère le nombre de répétitions sur le numéro de serie donnée de l'exercice à effectuer
       this.nbrRepetitionsExercice = this.monTrainingHistory[this.idsExercicesTraining[compteurExercices]][nomSerieConcatenee]
       console.log("compteur exo fin de serie : " + compteurExercices)
       console.log("----------------------- END ----------------------------")

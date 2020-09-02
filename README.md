@@ -1,2 +1,2 @@
 # FitnessUltime-v2
-Appli de dev mobile 
+Appli de Fitness

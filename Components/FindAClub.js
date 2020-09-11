@@ -1,23 +1,16 @@
 // Components/FindAClub.js
 
 import React, { Component } from 'react';
-import { StyleSheet, View, Text } from 'react-native'
-import { Map, GoogleApiWrapper } from 'google-maps-react';
-
-class FindAClub extends React.Component {
+import { View, Text } from 'react-native'
+ 
+class FindAClub extends Component {
+  
   render() {
     return (
-      <View style={styles.main_container}>
-        <Text>Ceci est la page GPS</Text>
-      </View>
-    )
+      // Important! Always set the container height explicitly
+      <Text>test</Text>
+    );
   }
 }
-
-const styles = StyleSheet.create({
-  main_container: {
-    flex: 1,
-  }
-})
-
-export default FindAClub
+ 
+export default FindAClub;

@@ -4,8 +4,6 @@ import 'react-native-gesture-handler';
 import { StyleSheet } from 'react-native'
 import Navigation from './Navigation/Navigation'
 
-
-
 export default class App extends React.Component {
 
   render() {
@@ -17,7 +15,7 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   menu_deroulant: {
-  backgroundColor: 'red'
+    backgroundColor: 'red'
   },
   image: {
     width: 120,

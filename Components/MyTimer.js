@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, StatusBar, TouchableOpacity, Dimensions } from 'react-native';
-import SoundPlayer from 'react-native-sound-player'
 
 const screen = Dimensions.get('window');
 
@@ -16,7 +15,7 @@ const getRemaining = (time) => {
 
 export default MyTimer = props => {
   // On definie ici le temps du compte à rebours en seconde
-  const howLong = 30;
+  const howLong = 5;
 
   const [remainingSecs, setRemainingSecs] = useState(howLong);
   const [isActive, setIsActive] = useState(false);

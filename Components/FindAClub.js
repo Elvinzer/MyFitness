@@ -3,11 +3,11 @@
 import React from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 
-class HomePage extends React.Component {
+class FindAClub extends React.Component {
   render() {
     return (
       <View style={styles.main_container}>
-        <Text>Ceci est la home page</Text>
+        <Text>Ceci est la page GPS</Text>
       </View>
     )
   }
@@ -19,4 +19,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default HomePage
+export default FindAClub

@@ -46,8 +46,7 @@ const styles = StyleSheet.create({
     "position": "relative",
     backgroundColor: '#07121B',
     "paddingLeft": 0,
-    "width": 360,
-    "height": 600,
+    flex : 1
   },
   "seancePull_backgroundScreenPull": {
     "opacity": 1,

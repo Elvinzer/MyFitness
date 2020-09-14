@@ -2,10 +2,9 @@ import React, {Component} from 'react';
 import PropTypes from "prop-types";
 import {StyleSheet, Text, View, TextInput, FlatList, Picker, ScrollView, TouchableHighlight, TouchableOpacity} from 'react-native';
 import {Image as ReactImage, Dimensions} from 'react-native';
-import {Svg, Defs, Pattern} from 'react-native-svg';
+import {Svg} from 'react-native-svg';
 import {Path as SvgPath} from 'react-native-svg';
-import {Text as SvgText} from 'react-native-svg';
-import {Image as SvgImage} from 'react-native-svg';
+
 
 const screen = Dimensions.get('window');
 
@@ -46,8 +45,7 @@ const styles = StyleSheet.create({
     "position": "relative",
     backgroundColor: '#07121B',
     "paddingLeft": 0,
-    "width": 360,
-    "height": 600,
+    flex : 1
   },
   "seancePush_backgroundScreenPush": {
     "opacity": 1,

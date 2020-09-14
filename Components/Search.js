@@ -44,7 +44,9 @@ class Search extends React.Component {
   render() {
     return (
       <View style={styles.main_container}>
+        <Text style={styles.title}>Selection du training</Text>
         <FlatList
+          tyle={styles.container_trainings}
           data={trainingList}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({item}) => <TrainingItem training={item} displayDetailForTraining={this._displayDetailForTraining}/>}
@@ -57,6 +59,18 @@ class Search extends React.Component {
 
 const styles = StyleSheet.create({
   main_container: {
+    flex: 1,
+    alignContent : 'center',
+  },
+  title:{
+    flex: 0.25,
+    fontWeight: 'bold',
+    fontSize : 22,
+    textAlign: 'center',
+    alignSelf: "center",
+    justifyContent: 'center'
+  },
+  container_trainings:{
     flex: 1,
   }
 })
